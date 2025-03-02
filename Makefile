@@ -1,22 +1,22 @@
-COMPILER = cc
+COMPILER = clang
 CFLAGS = -Wall -Wextra -Werror -g
 
-NAME = 
+NAME = gsplit
 
-SRCS = 
+SRCS = srcs/main.c srcs/options.c srcs/print.c srcs/parsing.c srcs/memory.c
 
 OBJECTS = ${SRCS:.c=.o}
 
-INCLUDE_FOLDER = 
-INCLUDES = 
+INCLUDE_FOLDER = headers
+INCLUDES = ${INCLUDE_FOLDER}/gsplit.h
 
 all: ${NAME}
 
 ${NAME}: ${OBJECTS}
-	${COMPILER} ${CFLAGS} $^ -o $@ -I${INCLUDE_FOLDER}
+	${COMPILER} ${CFLAGS} -I${INCLUDE_FOLDER} $^ -o $@
 
 %.o: %.c ${INCLUDES}
-	${COMPILER} ${CFLAGS} -c $< -o $@ -I${INCLUDE_FOLDER}
+	${COMPILER} ${CFLAGS} -I${INCLUDE_FOLDER} -c $< -o $@
 
 clean:
 	rm -f ${OBJECTS}
