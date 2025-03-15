@@ -4,21 +4,21 @@ int	main(int argc, char **argv)
 {
 	t_options	options;
 	t_gsplit	info;
-	t_graph		graph;
+	t_graph		*graphs;
 
-	graph.nodes = NULL;
-	graph.nodes_num = 0;
 	options = (t_options){NULL, NULL, 2, 10, false, false};
 	load_options(&options, argc, argv);
 	info.opts = &options;
 	open_files(&info);
 	if (options.verbose)
 		print_conf(info.opts);
-	load_graph(&info, &graph);
-	print_graph(&graph);
+	graphs = alloc_graphs(&info);
+	rewind(info.input);
+	load_graphs(&info, graphs);
+	print_graphs(graphs, info.graphs_num);
 	// start algorytmu
 	// czyszczenie pamieci
 	free_gsplit(&info);
-	free_graph(&graph);
+	free_graphs(graphs, info.graphs_num);
 	return (EXIT_SUCCESS);
 }
