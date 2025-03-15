@@ -18,7 +18,7 @@
 	int			val;
 }; */
 
-static bool	is_uint(char *str)
+bool	is_uint(char *str)
 {
 	int	i = 0;
 

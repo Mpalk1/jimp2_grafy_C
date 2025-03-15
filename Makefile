@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 NAME = gsplit
 
-SRCS = srcs/main.c srcs/options.c srcs/print.c srcs/parsing.c srcs/memory.c
+SRCS = srcs/main.c srcs/options.c srcs/print.c srcs/parsing.c srcs/memory.c srcs/debug.c
 
 OBJECTS = ${SRCS:.c=.o}
 
