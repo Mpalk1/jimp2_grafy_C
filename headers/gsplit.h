@@ -6,6 +6,8 @@
 # include <stdlib.h>
 # include <string.h>
 # include <assert.h>
+# include <errno.h>
+# include <limits.h>
 
 # define MAX_MARGIN 20 // <-- do ustalenia
 
@@ -13,6 +15,14 @@
 # define TEXT_DEFAULT "\e[m"
 
 # define DELETED_NODE -42
+
+# define BUFFER_SIZE 1024
+
+# define ERROR_ALLOC "Nie udało się przydzielić pamięci"
+# define ERROR_FORMAT "Nieprawidłowy format pliku wejściowego"
+# define ERROR_MAX_NODES_NUM "Maksymalna możliwa liczba węzłów w wierszu musi być dodatnią liczbą całkowitą"
+# define ERROR_NOT_ENOGH_NODES "Zbyt mało węzłów"
+# define ERROR_INVALID_INDEX "Nieprawidłowy index"
 
 /*
 Zawiera konfiguracje z opcji
@@ -29,7 +39,7 @@ typedef struct s_options
 
 typedef struct s_node
 {
-	struct s_node	*connections;
+	struct s_node	**connections;
 	size_t			connections_num;
 }				t_node;
 
@@ -48,12 +58,13 @@ typedef struct s_gsplit
 	FILE		*output;
 	t_options	*opts;
 	t_graph		graph;
+	int			graphs_num;
 	// bla bla bla
 }				t_gsplit;
 
 //	DEBUG.C - DELETE LATER
 
-void    print_graph(t_graph *graph);
+void    print_graphs(t_graph *graph, int graphs_num);
 
 //	MEMORY.C
 
@@ -61,6 +72,9 @@ void    print_graph(t_graph *graph);
 Zwalnia pamięć z t_gsplit, zamyka otwarte pliki
 */
 void			free_gsplit(t_gsplit *info);
+void	free_graphs(t_graph *graphs, int graphs_num);
+void	err_free_print(t_gsplit *info, char *err_msg, char *to_free, t_graph *graphs);
+t_graph	*alloc_graphs(t_gsplit *info);
 
 /*
 Zwalnia pamięć z t_graph
@@ -87,7 +101,7 @@ Otwiera pliki wejściowe i wyjściowe
 Może wyjść z programu przy błędach
 */
 void			open_files(t_gsplit *info);
-void			load_graph(t_gsplit *info, t_graph *graph);
+void			load_graphs(t_gsplit *info, t_graph *graphs);
 
 //	PRINT.C
 
