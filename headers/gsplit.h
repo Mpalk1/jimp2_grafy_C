@@ -22,7 +22,12 @@
 # define ERROR_FORMAT "Nieprawidłowy format pliku wejściowego"
 # define ERROR_MAX_NODES_NUM "Maksymalna możliwa liczba węzłów w wierszu musi być dodatnią liczbą całkowitą"
 # define ERROR_NOT_ENOGH_NODES "Zbyt mało węzłów"
-# define ERROR_INVALID_INDEX "Nieprawidłowy index"
+# define ERROR_INVALID_INDEX "Nieprawidłowy indeks"
+# define ERROR_CONNECTION_DUPLICATE "Powiązanie węzłów zduplikowane"
+# define ERROR_INVALID_PARTS "Nieprawidłowa liczba oczekiwanych grafów"
+# define ERROR_MARGIN_NOT_UINT "Margines musi być w formacie dodatniej liczby całkowitej"
+# define ERROR_INVALID_EXTENSION "Nieprawidłowe rozszerzenie pliku - oczekiwano .csrrg"
+# define ERROR_INVALID_NAME "Nieprawidłowa nazwa pliku - plik musi posiadać nazwę"
 
 /*
 Zawiera konfiguracje z opcji
@@ -74,6 +79,7 @@ Zwalnia pamięć z t_gsplit, zamyka otwarte pliki
 void			free_gsplit(t_gsplit *info);
 void	free_graphs(t_graph *graphs, int graphs_num);
 void	err_free_print(t_gsplit *info, char *err_msg, char *to_free, t_graph *graphs);
+void	err_print(char *err_msg);
 t_graph	*alloc_graphs(t_gsplit *info);
 
 /*

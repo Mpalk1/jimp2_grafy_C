@@ -63,7 +63,7 @@ static void	save_nodes(char *line, t_node *nodes, unsigned int nodes_num)
 	assert(i == nodes_num);
 }
 
-char	*init_connections_num(char *indexes, char *connections, t_graph *graphs)
+static char	*init_connections_num(char *indexes, char *connections, t_graph *graphs)
 {
 	char			*saveptr;
 	char			*connect_saveptr;
@@ -121,7 +121,7 @@ char	*init_connections_num(char *indexes, char *connections, t_graph *graphs)
 	return (NULL);
 }
 
-void	append_conn(t_graph *graphs, int graph_i, int node_i, t_node *node)
+static bool	append_conn(t_graph *graphs, int graph_i, int node_i, t_node *node)
 {
 	size_t	i;
 
@@ -129,11 +129,14 @@ void	append_conn(t_graph *graphs, int graph_i, int node_i, t_node *node)
 	{
 		if (!graphs[graph_i].nodes[node_i].connections[i])
 			break ;
+		if (graphs[graph_i].nodes[node_i].connections[i] == node)
+			return (false);
 	}
 	graphs[graph_i].nodes[node_i].connections[i] = node;
+	return (true);
 }
 
-void	append_connections(char *indexes, char *connections, t_graph *graphs)
+static bool	append_connections(char *indexes, char *connections, t_graph *graphs)
 {
 	char			*connect;
 	char			*token;
@@ -163,16 +166,17 @@ void	append_connections(char *indexes, char *connections, t_graph *graphs)
 			connect = strtok_r(NULL, ";", &connections);
 			if (!connect)
 				break ;
-			append_conn(graphs, 0, node_i, &graphs[0].nodes[atoi(connect)]);
-			append_conn(graphs, 0, atoi(connect), &graphs[0].nodes[node_i]);
+			if (!append_conn(graphs, 0, node_i, &graphs[0].nodes[atoi(connect)]) || !append_conn(graphs, 0, atoi(connect), &graphs[0].nodes[node_i]))
+				return (false);
 		}
 		begin_i = end_i;
 		if (end_i == INT_MAX)
 			break ;
 	}
+	return (true);
 }
 
-bool	alloc_connections(t_graph *graphs, int graphs_num)
+static bool	alloc_connections(t_graph *graphs, int graphs_num)
 {
 	for (int i = 0; i < graphs_num; i++)
     {
@@ -245,7 +249,12 @@ void	load_graphs(t_gsplit *info, t_graph *graphs)
 					free(connections);
 				err_free_print(info, ERROR_ALLOC, line, graphs);
 			}
-			append_connections(line, connections, graphs);
+			if (!append_connections(line, connections, graphs))
+			{
+				if (connections)
+					free(connections);
+				err_free_print(info, ERROR_CONNECTION_DUPLICATE, line, graphs);
+			}
 			break ;
 			// todo dodac wsparcie kilku grafow w pliku
 		}

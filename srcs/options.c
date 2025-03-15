@@ -55,29 +55,22 @@ void	load_options(t_options *opts, int argc, char **argv)
 				break;
 			case 'i':
 				opts->input_name = optarg;
+				if (strlen(opts->input_name) < 7)
+					err_print(ERROR_INVALID_NAME);
+				if (strcmp(opts->input_name + strlen(opts->input_name) - 6, ".csrrg"))
+					err_print(ERROR_INVALID_EXTENSION);
 				break;
 			case 'o':
 				opts->output_name = optarg;
 				break;
 			case 'p':
-				if (!is_uint(optarg))
-				{
-					fprintf(stderr, "Błąd: Liczba części musi być liczbą całkowitą\n");
-					exit(EXIT_FAILURE);
-				}
 				opts->parts = atoi(optarg);
-				if (opts->parts < 2)
-				{
-					fprintf(stderr, "Błąd: Liczba części musi być większa niż 1\n");
-					exit(EXIT_FAILURE);
-				}
+				if (!is_uint(optarg) || opts->parts < 2)
+					err_print(ERROR_INVALID_PARTS);
 				break;
 			case 'm':
 				if (!is_uint(optarg))
-				{
-					fprintf(stderr, "Błąd: Margines musi być w formacie liczby całkowitej\n");
-					exit(EXIT_FAILURE);
-				}
+					err_print(ERROR_MARGIN_NOT_UINT);
 				opts->margin = atoi(optarg);
 				if (opts->margin < 0 || opts->margin > MAX_MARGIN)
 				{

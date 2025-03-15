@@ -33,6 +33,12 @@ void	err_free_print(t_gsplit *info, char *err_msg, char *to_free, t_graph *graph
 	exit(EXIT_FAILURE);
 }
 
+void	err_print(char *err_msg)
+{
+	fprintf(stderr, "Błąd: %s\n", err_msg);
+	exit(EXIT_FAILURE);
+}
+
 int	count_lines(FILE *file)
 {
 	char	buf[BUFFER_SIZE];
