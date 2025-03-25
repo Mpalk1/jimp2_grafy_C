@@ -32,20 +32,38 @@ void print_graphs1(t_graph *graphs, int graphs_num) {
             printf("  No nodes to display.\n");
             continue;
         }
+        
+     
+        int max_partition = 0;
+        for (size_t j = 0; j < graphs[i].nodes_num; j++) {
+            if (graphs[i].nodes[j].partition > max_partition) {
+                max_partition = graphs[i].nodes[j].partition;
+            }
+        }
+        int partition_count = max_partition + 1;
+        
+        
+        int *part_counts = calloc(partition_count, sizeof(int));
+        if (!part_counts) {
+            printf("  Memory allocation failed for partition counts\n");
+            continue;
+        }
 
-        // Count nodes per partition
-        int part_counts[4] = {0}; // Assuming max 4 partitions
+        
         for (size_t j = 0; j < graphs[i].nodes_num; j++) {
             int part = graphs[i].nodes[j].partition;
-            if (part >= 0 && part < 4) part_counts[part]++;
+            if (part >= 0 && part < partition_count) {
+                part_counts[part]++;
+            }
         }
 
         printf("  Partition counts: ");
-        for (int p = 0; p < 4; p++) {
+        for (int p = 0; p < partition_count; p++) {
             printf("%d:%d ", p, part_counts[p]);
         }
         printf("\n");
 
+        
         for (size_t j = 0; j < graphs[i].nodes_num; j++) {
             printf("  Node %zu (Partition %d): ", j, graphs[i].nodes[j].partition);
             
@@ -58,5 +76,7 @@ void print_graphs1(t_graph *graphs, int graphs_num) {
             }
             printf("\n");
         }
+
+        free(part_counts);
     }
 }
