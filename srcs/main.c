@@ -15,8 +15,10 @@ int	main(int argc, char **argv)
 	graphs = alloc_graphs(&info);
 	rewind(info.input);
 	load_graphs(&info, graphs);
-	print_graphs(graphs, info.graphs_num);
+	//print_graphs(graphs, info.graphs_num);
 	// start algorytmu
+	partition_graph(&graphs[0], options.parts, options.margin);
+	print_graphs1(graphs, info.graphs_num);
 	// czyszczenie pamieci
 	free_gsplit(&info);
 	free_graphs(graphs, info.graphs_num);

@@ -46,6 +46,7 @@ typedef struct s_node
 {
 	struct s_node	**connections;
 	size_t			connections_num;
+	int partition; //numer podgrafu do ktorego nalezy wezel
 }				t_node;
 
 typedef struct s_graph
@@ -122,4 +123,17 @@ Wypisuje konfiguracje dla opcji -v (--verbose)
 */
 void			print_conf(t_options *options);
 
+typedef struct s_move {
+    size_t node_index;
+    int gain;
+    int target_part;
+} t_move;
+void print_graphs1(t_graph *graphs, int graphs_num);
+
+void initialize_partitions(t_graph *graph, int num_parts);
+void calculate_partition_sizes(t_graph *graph, int num_parts, size_t sizes[]);
+int compute_gain(t_graph *graph, size_t node_idx, int new_part);
+void optimize_partitions(t_graph *graph, int num_parts, int margin);
+void balance_partitions(t_graph *graph, int num_parts, int margin);
+void partition_graph(t_graph *graph, int num_parts, int margin);
 #endif
