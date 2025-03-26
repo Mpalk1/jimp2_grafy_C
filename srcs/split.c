@@ -48,7 +48,7 @@ int compute_gain(t_graph *graph, size_t node_idx, int new_part) {
 void optimize_partitions(t_graph *graph, int num_parts, int margin) {
     size_t sizes[num_parts];
     int improved;
-    const int max_iterations = 50;
+    const int max_iterations = 500;
     int iterations = 0;
     size_t ideal = graph->nodes_num / num_parts;
     int allowed_diff = ideal * margin / 100;
