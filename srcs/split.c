@@ -1,10 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <limits.h>
 #include "gsplit.h"
 
-void initialize_partitions(t_graph *graph, int num_parts) {
+static void initialize_partitions(t_graph *graph, int num_parts) {
     size_t part_size = graph->nodes_num / num_parts;
     size_t remainder = graph->nodes_num % num_parts;
     
@@ -23,7 +19,7 @@ void initialize_partitions(t_graph *graph, int num_parts) {
     }
 }
 
-void calculate_partition_sizes(t_graph *graph, int num_parts, size_t sizes[]) {
+static void calculate_partition_sizes(t_graph *graph, int num_parts, size_t *sizes) {
     for (int i = 0; i < num_parts; i++) {
         sizes[i] = 0;
     }
@@ -33,7 +29,7 @@ void calculate_partition_sizes(t_graph *graph, int num_parts, size_t sizes[]) {
     }
 }
 
-int compute_gain(t_graph *graph, size_t node_idx, int new_part) {
+static int compute_gain(t_graph *graph, size_t node_idx, int new_part) {
     int gain = 0;
     int current_part = graph->nodes[node_idx].partition;
     
@@ -45,16 +41,14 @@ int compute_gain(t_graph *graph, size_t node_idx, int new_part) {
     return gain;
 }
 
-void optimize_partitions(t_graph *graph, int num_parts, int margin) {
-    size_t sizes[num_parts];
-    int improved;
-    const int max_iterations = 50;
+static void    optimize_partitions(t_graph *graph, int num_parts, int margin, size_t *sizes) {
+    bool improved;
     int iterations = 0;
     size_t ideal = graph->nodes_num / num_parts;
     int allowed_diff = ideal * margin / 100;
 
     do {
-        improved = 0;
+        improved = false;
         t_move best_move = {0, INT_MIN, -1};
         calculate_partition_sizes(graph, num_parts, sizes);
 
@@ -86,15 +80,14 @@ void optimize_partitions(t_graph *graph, int num_parts, int margin) {
             graph->nodes[best_move.node_index].partition = best_move.target_part;
             sizes[old_part]--;
             sizes[best_move.target_part]++;
-            improved = 1;
+            improved = true;
         }
 
         iterations++;
-    } while (improved && iterations < max_iterations);
+    } while (improved && iterations < OPTIMIZE_MAX_ITER);
 }
 
-void balance_partitions(t_graph *graph, int num_parts, int margin) {
-    size_t sizes[num_parts];
+static void balance_partitions(t_graph *graph, int num_parts, int margin, size_t *sizes) {
     calculate_partition_sizes(graph, num_parts, sizes);
     
     size_t ideal = graph->nodes_num / num_parts;
@@ -135,12 +128,17 @@ void balance_partitions(t_graph *graph, int num_parts, int margin) {
     }
 }
 
-void partition_graph(t_graph *graph, int num_parts, int margin) {
-    if (num_parts < 2) return;
-    
+bool partition_graph(t_graph *graph, int num_parts, int margin) {
+    size_t  *sizes;
+
+    sizes = (size_t *)calloc(sizeof(size_t), num_parts);
+    if (!sizes)
+        return (false);
     srand(time(NULL));
     initialize_partitions(graph, num_parts);
-    optimize_partitions(graph, num_parts, margin);
-    balance_partitions(graph, num_parts, margin);
-    optimize_partitions(graph, num_parts, margin);
+    optimize_partitions(graph, num_parts, margin, sizes);
+    balance_partitions(graph, num_parts, margin, sizes);
+    optimize_partitions(graph, num_parts, margin, sizes);
+    free(sizes);
+    return (true);
 }

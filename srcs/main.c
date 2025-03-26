@@ -1,5 +1,14 @@
 #include "gsplit.h"
 
+int	count_all_nodes(t_graph *graphs, int graphs_num)// todo do przeniesienia
+{
+	int	result = 0;
+
+	for (int i = 0; i < graphs_num; i++)
+		result += graphs[i].nodes_num;
+	return (result);
+}
+
 int	main(int argc, char **argv)
 {
 	t_options	options;
@@ -15,11 +24,14 @@ int	main(int argc, char **argv)
 	graphs = alloc_graphs(&info);
 	rewind(info.input);
 	load_graphs(&info, graphs);
+	if (info.opts->parts > count_all_nodes(graphs, info.graphs_num))
+		err_free_print(&info, ERROR_INVALID_PARTS, NULL, graphs);
 	//print_graphs(graphs, info.graphs_num);
-	// start algorytmu
-	partition_graph(&graphs[0], options.parts, options.margin);
+	if (!partition_graph(&graphs[0], options.parts, options.margin))
+		err_free_print(&info, ERROR_ALLOC, NULL, graphs);
 	print_graphs1(graphs, info.graphs_num);
-	// czyszczenie pamieci
+	// sprawdzic czy w marginesie
+	// zliczyc ilosc przeciec
 	free_gsplit(&info);
 	free_graphs(graphs, info.graphs_num);
 	return (EXIT_SUCCESS);

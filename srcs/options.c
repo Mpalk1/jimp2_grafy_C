@@ -55,9 +55,11 @@ void	load_options(t_options *opts, int argc, char **argv)
 				break;
 			case 'i':
 				opts->input_name = optarg;
-				if (strlen(opts->input_name) < 7)
+				if (strlen(opts->input_name) < 7 && !strcmp(opts->input_name, ".csrrg"))
 					err_print(ERROR_INVALID_NAME);
-				if (strcmp(opts->input_name + strlen(opts->input_name) - 6, ".csrrg"))
+				else if (strlen(opts->input_name) < 7)
+					err_print(ERROR_INVALID_EXTENSION);
+				else if (strcmp(opts->input_name + strlen(opts->input_name) - 6, ".csrrg"))
 					err_print(ERROR_INVALID_EXTENSION);
 				break;
 			case 'o':

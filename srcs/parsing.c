@@ -1,6 +1,4 @@
 #include "gsplit.h"
-#include <stdio.h>
-#include <unistd.h>
 
 void	open_files(t_gsplit *info)
 {
