@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include <limits.h>
 #include "gsplit.h"
 
@@ -138,7 +137,6 @@ void balance_partitions(t_graph *graph, int num_parts, int margin) {
 void partition_graph(t_graph *graph, int num_parts, int margin) {
     if (num_parts < 2) return;
     
-    srand(time(NULL));
     initialize_partitions(graph, num_parts);
     optimize_partitions(graph, num_parts, margin);
     balance_partitions(graph, num_parts, margin);
