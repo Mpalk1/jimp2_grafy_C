@@ -28,17 +28,6 @@ void	open_files(t_gsplit *info)
 	}
 }
 
-static unsigned int	count_nodes(char *line)
-{
-	unsigned int	result;
-
-	result = 1;
-	for (int i = 0; line[i]; i++)
-		if (line[i] == ';')
-			result++;
-	return (result);
-}
-
 static void	save_nodes(char *line, t_node *nodes, unsigned int nodes_num)
 {
 	char			*saveptr;
@@ -213,10 +202,14 @@ void	load_graphs(t_gsplit *info, t_graph *graphs)
 		case 1:
 			if (line[0] == '\0' || !is_uint(line))
 				err_free_print(info, ERROR_MAX_NODES_NUM, line, graphs);
-			// max_node_num = atoi(line);
+			info->max_node_num = atoi(line);
 			break ;
 		case 2:
-			graphs[0].nodes_num = count_nodes(line);
+			info->nodes_in_row = strdup(line);
+			if (!info->nodes_in_row)
+				err_free_print(info, ERROR_ALLOC, line,
+					graphs);
+			graphs[0].nodes_num = strcountch(line, ';');
 			if (graphs[0].nodes_num < 2)
 				err_free_print(info, ERROR_NOT_ENOGH_NODES, line, graphs);
 			graphs[0].nodes = (t_node *)calloc(sizeof(t_node),
@@ -227,8 +220,14 @@ void	load_graphs(t_gsplit *info, t_graph *graphs)
 			save_nodes(line, graphs[0].nodes, graphs[0].nodes_num);
 			if (!graphs[0].nodes)
 				err_free_print(info, ERROR_INVALID_INDEX, line, graphs);
+			strreplace(info->nodes_in_row, ';', ',');
 			break ;
 		case 3:
+			info->node_index = strdup(line);
+			if (!info->node_index)
+				err_free_print(info, ERROR_ALLOC, line,
+					graphs);
+			strreplace(info->node_index, ';', ',');
 			break ;
 		case 4:
 			connections = strdup(line);

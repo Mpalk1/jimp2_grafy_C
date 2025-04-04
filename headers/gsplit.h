@@ -67,9 +67,10 @@ typedef struct s_gsplit
 	FILE			*input;
 	FILE			*output;
 	t_options		*opts;
-	t_graph			graph;
 	int				graphs_num;
-	// bla bla bla
+	int				max_node_num;
+	char			*nodes_in_row;
+	char			*node_index;
 }					t_gsplit;
 
 typedef struct s_move
@@ -100,12 +101,23 @@ Zwalnia pamięć z t_graph
 */
 void				free_graph(t_graph *graph);
 
+//	MISC.C
+
+unsigned int	strcountch(char *line, char to_find);
+void    strreplace(char *str, char from, char to);
+
+
 //	OPTIONS.C
 
 /*
 Sprawdza czy liczba to dodatnia liczba całkowita
 */
 bool				is_uint(char *str);
+
+//	OUTPUT.C
+
+void    save_text(t_gsplit *info, t_graph *graphs);
+
 
 /*
 Wczytuje opcje, sprawdza ich poprawność

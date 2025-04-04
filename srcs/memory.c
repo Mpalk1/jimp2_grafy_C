@@ -6,6 +6,10 @@ void	free_gsplit(t_gsplit *info)
 		fclose(info->input);
 	if (info->opts->output_name != NULL && info->output != NULL)
 		fclose(info->output);
+	if (info->nodes_in_row != NULL)
+		free(info->nodes_in_row);
+	if (info->node_index != NULL)
+		free(info->node_index);
 }
 
 void	free_graphs(t_graph *graphs, int graphs_num)

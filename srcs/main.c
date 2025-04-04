@@ -18,6 +18,8 @@ int	main(int argc, char **argv)
 	options = (t_options){NULL, NULL, 2, 10, false, false};
 	load_options(&options, argc, argv);
 	info.opts = &options;
+	info.node_index = NULL;
+	info.nodes_in_row = NULL;
 	open_files(&info);
 	if (options.verbose)
 		print_conf(info.opts);
@@ -28,6 +30,9 @@ int	main(int argc, char **argv)
 	// start algorytmu
 	partition_graph(&graphs[0], options.parts, options.margin);
 	print_graphs1(graphs, info.graphs_num);
+	// sprawdzic czy w marginesie
+	// zliczyc ilosc przeciec
+	save_text(&info, graphs);
 	free_gsplit(&info);
 	free_graphs(graphs, info.graphs_num);
 	return (EXIT_SUCCESS);
