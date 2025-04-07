@@ -24,20 +24,10 @@ int	main(int argc, char **argv)
 	graphs = alloc_graphs(&info);
 	rewind(info.input);
 	load_graphs(&info, graphs);
-<<<<<<< HEAD
 	print_graphs(graphs, info.graphs_num);
 	// start algorytmu
 	partition_graph(&graphs[0], options.parts, options.margin);
-=======
-	if (info.opts->parts > count_all_nodes(graphs, info.graphs_num))
-		err_free_print(&info, ERROR_INVALID_PARTS, NULL, graphs);
-	//print_graphs(graphs, info.graphs_num);
-	if (!partition_graph(&graphs[0], options.parts, options.margin))
-		err_free_print(&info, ERROR_ALLOC, NULL, graphs);
->>>>>>> 75d234fa79b24aa815fdbe1975d760b7e57aaa89
 	print_graphs1(graphs, info.graphs_num);
-	// sprawdzic czy w marginesie
-	// zliczyc ilosc przeciec
 	free_gsplit(&info);
 	free_graphs(graphs, info.graphs_num);
 	return (EXIT_SUCCESS);
