@@ -1,5 +1,42 @@
 #include "gsplit.h"
 
+void    free_output_data(t_output_data *data)
+{
+    if (data->edge_table)
+        free(data->edge_table);
+    if (data->offset_table)
+        free(data->offset_table);
+    if (data->end_table)
+        free(data->end_table);
+    if (data->first_nodes_indexes)
+        free(data->first_nodes_indexes);
+    if (data->indexes_in_row)
+        free(data->indexes_in_row);
+}
+
+bool    allocate_output(t_output_data *data, size_t end_size, size_t off_size, size_t edge_size)
+{
+    data->edge_table = NULL;
+    data->offset_table = NULL;
+    data->end_table = NULL;
+    data->end_table = (__uint16_t *)malloc(sizeof(__uint16_t) * end_size);
+    if (!data->end_table)
+        return (false);
+    data->offset_table = (__uint16_t *)malloc(sizeof(__uint16_t) * off_size);
+    if (!data->offset_table)
+    {
+        free_output_data(data);
+        return (false);
+    }
+    data->edge_table = (__uint16_t *)malloc(sizeof(__uint16_t) * edge_size);
+    if (!data->edge_table)
+    {
+        free_output_data(data);
+        return (false);
+    }
+    return (true);
+}
+
 void	free_gsplit(t_gsplit *info)
 {
 	if (info->opts->input_name != NULL && info->input != NULL)
