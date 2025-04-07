@@ -1,6 +1,5 @@
 #include "gsplit.h"
 
-<<<<<<< HEAD
 
 static size_t count_nodes_in_partition(t_graph *graph, int partition) {
     size_t count = 0;
@@ -87,9 +86,6 @@ static void fix_disconnected_partitions(t_graph *graph, int num_parts) {
 
 
 void initialize_partitions(t_graph *graph, int num_parts) {
-=======
-static void initialize_partitions(t_graph *graph, int num_parts) {
->>>>>>> 75d234fa79b24aa815fdbe1975d760b7e57aaa89
     size_t part_size = graph->nodes_num / num_parts;
     size_t remainder = graph->nodes_num % num_parts;
     
@@ -224,16 +220,9 @@ bool partition_graph(t_graph *graph, int num_parts, int margin) {
     if (!sizes)
         return (false);
     initialize_partitions(graph, num_parts);
-<<<<<<< HEAD
-    optimize_partitions(graph, num_parts, margin);
-    balance_partitions(graph, num_parts, margin);
-    fix_disconnected_partitions(graph, num_parts);
-    optimize_partitions(graph, num_parts, margin); 
-=======
     optimize_partitions(graph, num_parts, margin, sizes);
     balance_partitions(graph, num_parts, margin, sizes);
-    optimize_partitions(graph, num_parts, margin, sizes);
-    free(sizes);
-    return (true);
->>>>>>> 75d234fa79b24aa815fdbe1975d760b7e57aaa89
+    fix_disconnected_partitions(graph, num_parts);
+    optimize_partitions(graph, num_parts, margin, sizes); 
+    return true;
 }
