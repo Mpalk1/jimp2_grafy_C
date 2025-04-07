@@ -46,7 +46,7 @@ typedef struct s_node
 {
 	struct s_node	**connections;
 	size_t			connections_num;
-	int partition; //numer podgrafu do ktorego nalezy wezel
+	int partition; 
 }				t_node;
 
 typedef struct s_graph

@@ -3,6 +3,91 @@
 #include <limits.h>
 #include "gsplit.h"
 
+
+static size_t count_nodes_in_partition(t_graph *graph, int partition) {
+    size_t count = 0;
+    for (size_t i = 0; i < graph->nodes_num; i++) {
+        if (graph->nodes[i].partition == partition) count++;
+    }
+    return count;
+}
+
+
+static bool is_partition_connected(t_graph *graph, int partition) {
+    bool *visited = calloc(graph->nodes_num, sizeof(bool));
+    if (!visited) return false;
+
+    
+    size_t start_node = graph->nodes_num;  
+    for (size_t i = 0; i < graph->nodes_num; i++) {
+        if (graph->nodes[i].partition == partition) {
+            start_node = i;
+            break;
+        }
+    }
+
+    if (start_node == graph->nodes_num) {  
+        free(visited);
+        return false;
+    }
+
+    
+    size_t *queue = malloc(graph->nodes_num * sizeof(size_t));
+    if (!queue) {
+        free(visited);
+        return false;
+    }
+
+    size_t front = 0, rear = 0;
+    queue[rear++] = start_node;
+    visited[start_node] = true;
+    size_t visited_count = 1;
+
+    while (front < rear) {
+        size_t current = queue[front++];
+
+        for (size_t i = 0; i < graph->nodes[current].connections_num; i++) {
+            t_node *neighbor = graph->nodes[current].connections[i];
+            size_t neighbor_idx = neighbor - graph->nodes;
+
+            if (neighbor->partition == partition && !visited[neighbor_idx]) {
+                visited[neighbor_idx] = true;
+                queue[rear++] = neighbor_idx;
+                visited_count++;
+            }
+        }
+    }
+
+    free(queue);
+    free(visited);
+    return (visited_count == count_nodes_in_partition(graph, partition));
+}
+
+
+static void fix_disconnected_partitions(t_graph *graph, int num_parts) {
+    for (int p = 0; p < num_parts; p++) {
+        if (!is_partition_connected(graph, p)) {
+            for (size_t i = 0; i < graph->nodes_num; i++) {
+                if (graph->nodes[i].partition == p) {
+                    bool has_local_connection = false;
+                    for (size_t j = 0; j < graph->nodes[i].connections_num; j++) {
+                        if (graph->nodes[i].connections[j]->partition == p) {
+                            has_local_connection = true;
+                            break;
+                        }
+                    }
+
+                    if (!has_local_connection && graph->nodes[i].connections_num > 0) {
+                        
+                        graph->nodes[i].partition = graph->nodes[i].connections[0]->partition;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
 void initialize_partitions(t_graph *graph, int num_parts) {
     size_t part_size = graph->nodes_num / num_parts;
     size_t remainder = graph->nodes_num % num_parts;
@@ -140,5 +225,6 @@ void partition_graph(t_graph *graph, int num_parts, int margin) {
     initialize_partitions(graph, num_parts);
     optimize_partitions(graph, num_parts, margin);
     balance_partitions(graph, num_parts, margin);
-    optimize_partitions(graph, num_parts, margin);
+    fix_disconnected_partitions(graph, num_parts);
+    optimize_partitions(graph, num_parts, margin); 
 }
