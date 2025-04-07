@@ -80,6 +80,22 @@ typedef struct s_move
 	int				target_part;
 }					t_move;
 
+typedef struct s_output_data
+{
+	__uint16_t		signature;
+	__uint16_t		file_size;
+	__uint16_t		parts_count;
+	__uint16_t		rows_count;
+	__uint16_t		columns_count;
+	__uint32_t		nodes_count;
+	__uint16_t		*indexes_in_row;
+	__uint16_t		*first_nodes_indexes;
+	__uint16_t		*end_table;
+	__uint16_t		*offset_table;
+	__uint16_t		*edge_table;
+
+}				t_output_data;
+
 //	DEBUG.C - DELETE LATER
 
 void				print_graphs(t_graph *graph, int graphs_num);
