@@ -134,7 +134,6 @@ bool partition_graph(t_graph *graph, int num_parts, int margin) {
     sizes = (size_t *)calloc(sizeof(size_t), num_parts);
     if (!sizes)
         return (false);
-    srand(time(NULL));
     initialize_partitions(graph, num_parts);
     optimize_partitions(graph, num_parts, margin, sizes);
     balance_partitions(graph, num_parts, margin, sizes);
