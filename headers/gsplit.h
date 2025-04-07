@@ -111,6 +111,8 @@ void				err_free_print(t_gsplit *info, char *err_msg, char *to_free,
 						t_graph *graphs);
 void				err_print(char *err_msg);
 t_graph				*alloc_graphs(t_gsplit *info);
+bool    			allocate_output(t_output_data *data, size_t end_size, size_t off_size, size_t edge_size);
+void    			free_output_data(t_output_data *data);
 
 /*
 Zwalnia pamięć z t_graph
@@ -132,6 +134,7 @@ bool				is_uint(char *str);
 
 //	OUTPUT.C
 
+void    save_binary(t_gsplit *info, t_graph *graphs);
 void    save_text(t_gsplit *info, t_graph *graphs);
 
 

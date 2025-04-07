@@ -34,7 +34,10 @@ int	main(int argc, char **argv)
 	print_graphs1(graphs, info.graphs_num);
 	// sprawdzic czy w marginesie
 	// zliczyc ilosc przeciec
-	save_text(&info, graphs);
+	if (info.opts->binary)
+		save_binary(&info, graphs);
+	else
+		save_text(&info, graphs);
 	free_gsplit(&info);
 	free_graphs(graphs, info.graphs_num);
 	return (EXIT_SUCCESS);

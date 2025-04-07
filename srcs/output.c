@@ -1,48 +1,46 @@
 #include "gsplit.h"
+#include <stdint.h>
+#include <arpa/inet.h>
 
-void    save_binary()
+bool    copy_matrix_data(t_output_data *data, char *nodes_in_row, char *node_index)
 {
-    //calculate size
-    //write header
-    //write some data in text format
-}
-
-size_t  count_connections(t_graph *graphs)
-{
-    size_t result = 0;
-
-    for (size_t i = 0; i < graphs[0].nodes_num; i++)
-        result += graphs[0].nodes[i].connections_num;
-    return (result);
-}
-
-void    free_output_data(t_output_data *data)
-{
-    free(data->edge_table);
-    free(data->offset_table);
-    free(data->end_table);
-}
-
-bool    allocate_output(t_output_data *data, size_t end_size, size_t off_size, size_t edge_size)
-{
-    data->edge_table = NULL;
-    data->offset_table = NULL;
-    data->end_table = NULL;
-    data->end_table = malloc(sizeof(__uint16_t) * end_size);
-    if (!data->end_table)
-        return (false);
-    data->offset_table = malloc(sizeof(__uint16_t) * off_size);
-    if (!data->offset_table)
+    char			*saveptr = NULL;
+	char			*token = NULL;
+	unsigned int	i;
+    data->indexes_in_row = (__uint16_t *)malloc(sizeof(__uint16_t) * data->nodes_count);
+    if (!data->indexes_in_row)
     {
         free_output_data(data);
         return (false);
     }
-    data->edge_table = malloc(sizeof(__uint16_t) * edge_size);
-    if (!data->edge_table)
+    data->first_nodes_indexes = (__uint16_t *)malloc(sizeof(__uint16_t) * (data->columns_count + 1));
+    if (!data->first_nodes_indexes)
     {
         free_output_data(data);
         return (false);
     }
+	token = strtok_r(nodes_in_row, ",", &saveptr);
+	for (i = 0; i < data->nodes_count && token != NULL; i++)
+	{
+		if (token[0] == '\0' || !is_uint(token))
+		{
+			free_output_data(data);
+            return (false);
+		}
+		data->indexes_in_row[i] = atoi(token);
+		token = strtok_r(NULL, ",", &saveptr);
+	}
+    token = strtok_r(node_index, ",", &saveptr);
+	for (i = 0; i < (data->columns_count + 1) && token != NULL; i++)
+	{
+		if (token[0] == '\0' || !is_uint(token))
+		{
+			free_output_data(data);
+            return (false);
+		}
+		data->first_nodes_indexes[i] = atoi(token);
+		token = strtok_r(NULL, ",", &saveptr);
+	}
     return (true);
 }
 
@@ -54,9 +52,9 @@ void    get_output_tables(t_output_data *data, t_gsplit *info, t_graph *graphs, 
     data->nodes_count = (int)graphs[0].nodes_num;
     data->columns_count = info->max_node_num;
     data->parts_count = info->opts->parts;
-    //split nodes in row and node index
-    //info->nodes_in_row, info->node_index
-    // data->file_size = 13 + 2 * data->nodes_count + 2 * (data->columns_count + 1) + 2 * data->parts_count + 2 * (ostatni element tabeli końców + 1) + 2 * (ostatni element tabeli przesunięć + 1);
+    data->signature = ('G' << 8) | 'S';
+    if (!copy_matrix_data(data, info->nodes_in_row, info->node_index))
+        err_free_print(info, ERROR_ALLOC, NULL, graphs);
     int edge_index = 0;
     int offset_index = 0;
     int end_table_index = 0;
@@ -78,7 +76,76 @@ void    get_output_tables(t_output_data *data, t_gsplit *info, t_graph *graphs, 
             }
         }
         data->end_table[end_table_index++] = last_node_in_partition;
+    }   
+    data->file_size = 13 + 2 * data->nodes_count + 2 * (data->columns_count + 1) + 2 * data->parts_count + 2 * graphs[0].nodes_num + 2 * connections;
+}
+
+size_t write_uint24(FILE *f, uint32_t val)
+{
+    uint8_t bytes[3];
+    bytes[0] = (val >> 16) & 0xFF;
+    bytes[1] = (val >> 8) & 0xFF;
+    bytes[2] = val & 0xFF;
+    return (fwrite(bytes, 1, 3, f));
+}
+
+size_t  count_connections(t_graph *graphs)
+{
+    size_t result = 0;
+
+    for (size_t i = 0; i < graphs[0].nodes_num; i++)
+        result += graphs[0].nodes[i].connections_num;
+    return (result);
+}
+
+void    save_binary(t_gsplit *info, t_graph *graphs)
+{
+    size_t          wrote = 0;
+    t_output_data   data;
+    uint16_t        tmp16;
+    const size_t    connections = count_connections(graphs);
+    
+    get_output_tables(&data, info, graphs, connections);
+    tmp16 = htons(data.signature);
+    wrote += fwrite(&tmp16, sizeof(tmp16), 1, info->output) * sizeof(tmp16);
+    tmp16 = htons(data.file_size);
+    wrote += fwrite(&tmp16, sizeof(tmp16), 1, info->output) * sizeof(tmp16);
+    tmp16 = htons(data.parts_count);
+    wrote += fwrite(&tmp16, sizeof(tmp16), 1, info->output) * sizeof(tmp16);
+    tmp16 = htons(data.rows_count);
+    wrote += fwrite(&tmp16, sizeof(tmp16), 1, info->output) * sizeof(tmp16);
+    tmp16 = htons(data.columns_count);
+    wrote += fwrite(&tmp16, sizeof(tmp16), 1, info->output) * sizeof(tmp16);
+    wrote += write_uint24(info->output, data.nodes_count);
+
+    for (uint32_t i = 0; i < data.nodes_count; i++)
+    {
+        tmp16 = htons(data.indexes_in_row[i]);
+        wrote += fwrite(&tmp16, sizeof(tmp16), 1, info->output) * sizeof(tmp16);
     }
+    for (uint32_t i = 0; i < (data.columns_count + 1); i++)
+    {
+        tmp16 = htons(data.first_nodes_indexes[i]);
+        wrote += fwrite(&tmp16, sizeof(tmp16), 1, info->output) * sizeof(tmp16);
+    }
+    for (uint32_t i = 0; i < data.parts_count; i++)
+    {
+        tmp16 = htons(data.end_table[i]);
+        wrote += fwrite(&tmp16, sizeof(tmp16), 1, info->output) * sizeof(tmp16);
+    }
+    for (uint32_t i = 0; i < graphs[0].nodes_num; i++)
+    {
+        tmp16 = htons(data.offset_table[i]);
+        wrote += fwrite(&tmp16, sizeof(tmp16), 1, info->output) * sizeof(tmp16);
+    }
+    for (uint32_t i = 0; i < connections; i++)
+    {
+        tmp16 = htons(data.edge_table[i]);
+        wrote += fwrite(&tmp16, sizeof(tmp16), 1, info->output) * sizeof(tmp16);
+    }
+    free_output_data(&data);
+    if (wrote != data.file_size)
+        printf("ERROR: the file size is not correct!!, %zu but should be %hu\n", wrote, data.file_size);
 }
 
 void    save_text(t_gsplit *info, t_graph *graphs)
@@ -87,8 +154,26 @@ void    save_text(t_gsplit *info, t_graph *graphs)
     const size_t  connections = count_connections(graphs);
     
     get_output_tables(&data, info, graphs, connections);
+    
+    // {//DEBUG!!!!!!!!!!!!!!!!!!
+    //     printf("%c%c\n%d\n", data.signature >> 8, data.signature & 255, data.file_size);
+    // }
     fprintf(info->output, "%d\n%d\n%d\n%d\n", data.parts_count, data.rows_count, data.columns_count, data.nodes_count);
-    fprintf(info->output, "%s\n%s\n", "temp", "temp");//todo
+    for (unsigned int i = 0; i < data.nodes_count; i++)
+    {
+        fprintf(info->output, "%d", data.indexes_in_row[i]);
+        if (i != data.nodes_count - 1)
+            fprintf(info->output, ",");
+    }
+    fprintf(info->output, "\n");
+    for (unsigned int i = 0; i < (data.columns_count + 1); i++)
+    {
+        fprintf(info->output, "%d", data.first_nodes_indexes[i]);
+        if (i != data.columns_count)
+            fprintf(info->output, ",");
+    }
+    fprintf(info->output, "\n"); 
+
     for (int i = 0; i < info->opts->parts; i++)
     {
         fprintf(info->output, "%d", data.end_table[i]);
