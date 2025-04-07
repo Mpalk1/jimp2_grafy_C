@@ -1,7 +1,4 @@
 #include "gsplit.h"
-#include <stdint.h>
-#include <arpa/inet.h>
-#include <endian.h>
 
 bool    copy_matrix_data(t_output_data *data, char *nodes_in_row, char *node_index)
 {
@@ -94,8 +91,8 @@ void    save_binary(t_gsplit *info, t_graph *graphs)
 {
     size_t          wrote = 0;
     t_output_data   data;
-    uint16_t        tmp16;
-    uint32_t        tmp32;
+    __uint16_t        tmp16;
+    __uint32_t        tmp32;
     const size_t    connections = count_connections(graphs);
     
     get_output_tables(&data, info, graphs, connections);
@@ -112,29 +109,29 @@ void    save_binary(t_gsplit *info, t_graph *graphs)
     tmp32 = htole32(data.nodes_count);
     wrote += fwrite(&tmp32, sizeof(tmp32), 1, info->output) * sizeof(tmp32);
 
-    for (uint32_t i = 0; i < data.nodes_count; i++)
+    for (__uint32_t i = 0; i < data.nodes_count; i++)
     {
-        tmp16 = htons(data.indexes_in_row[i]);
+        tmp16 = htole16(data.indexes_in_row[i]);
         wrote += fwrite(&tmp16, sizeof(tmp16), 1, info->output) * sizeof(tmp16);
     }
-    for (uint32_t i = 0; i < (data.columns_count + 1); i++)
+    for (__uint32_t i = 0; i < (data.columns_count + 1); i++)
     {
-        tmp16 = htons(data.first_nodes_indexes[i]);
+        tmp16 = htole16(data.first_nodes_indexes[i]);
         wrote += fwrite(&tmp16, sizeof(tmp16), 1, info->output) * sizeof(tmp16);
     }
-    for (uint32_t i = 0; i < data.parts_count; i++)
+    for (__uint32_t i = 0; i < data.parts_count; i++)
     {
-        tmp32 = htons(data.end_table[i]);
+        tmp32 = htole32(data.end_table[i]);
         wrote += fwrite(&tmp32, sizeof(tmp32), 1, info->output) * sizeof(tmp32);
     }
-    for (uint32_t i = 0; i < graphs[0].nodes_num; i++)
+    for (__uint32_t i = 0; i < graphs[0].nodes_num; i++)
     {
-        tmp32 = htons(data.offset_table[i]);
+        tmp32 = htole32(data.offset_table[i]);
         wrote += fwrite(&tmp32, sizeof(tmp32), 1, info->output) * sizeof(tmp32);
     }
-    for (uint32_t i = 0; i < connections; i++)
+    for (__uint32_t i = 0; i < connections; i++)
     {
-        tmp32 = htons(data.edge_table[i]);
+        tmp32 = htole32(data.edge_table[i]);
         wrote += fwrite(&tmp32, sizeof(tmp32), 1, info->output) * sizeof(tmp32);
     }
     free_output_data(&data);

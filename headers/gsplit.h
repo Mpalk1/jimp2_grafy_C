@@ -10,6 +10,7 @@
 # include <string.h>
 # include <time.h>
 # include <unistd.h> // ssize_t
+# include <endian.h>
 
 # define MAX_MARGIN 50 // <-- do ustalenia
 
