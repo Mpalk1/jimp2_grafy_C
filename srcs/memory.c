@@ -19,16 +19,16 @@ bool    allocate_output(t_output_data *data, size_t end_size, size_t off_size, s
     data->edge_table = NULL;
     data->offset_table = NULL;
     data->end_table = NULL;
-    data->end_table = (__uint16_t *)malloc(sizeof(__uint16_t) * end_size);
+    data->end_table = (__uint32_t *)malloc(sizeof(__uint32_t) * end_size);
     if (!data->end_table)
         return (false);
-    data->offset_table = (__uint16_t *)malloc(sizeof(__uint16_t) * off_size);
+    data->offset_table = (__uint32_t *)malloc(sizeof(__uint32_t) * off_size);
     if (!data->offset_table)
     {
         free_output_data(data);
         return (false);
     }
-    data->edge_table = (__uint16_t *)malloc(sizeof(__uint16_t) * edge_size);
+    data->edge_table = (__uint32_t *)malloc(sizeof(__uint32_t) * edge_size);
     if (!data->edge_table)
     {
         free_output_data(data);

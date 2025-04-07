@@ -1,6 +1,7 @@
 #include "gsplit.h"
 #include <stdint.h>
 #include <arpa/inet.h>
+#include <endian.h>
 
 bool    copy_matrix_data(t_output_data *data, char *nodes_in_row, char *node_index)
 {
@@ -77,16 +78,7 @@ void    get_output_tables(t_output_data *data, t_gsplit *info, t_graph *graphs, 
         }
         data->end_table[end_table_index++] = last_node_in_partition;
     }   
-    data->file_size = 13 + 2 * data->nodes_count + 2 * (data->columns_count + 1) + 2 * data->parts_count + 2 * graphs[0].nodes_num + 2 * connections;
-}
-
-size_t write_uint24(FILE *f, uint32_t val)
-{
-    uint8_t bytes[3];
-    bytes[0] = (val >> 16) & 0xFF;
-    bytes[1] = (val >> 8) & 0xFF;
-    bytes[2] = val & 0xFF;
-    return (fwrite(bytes, 1, 3, f));
+    data->file_size = 16 + sizeof(__uint16_t) * data->nodes_count + sizeof(__uint16_t) * (data->columns_count + 1) + sizeof(__uint32_t) * data->parts_count + sizeof(__uint32_t) * graphs[0].nodes_num + sizeof(__uint32_t) * connections;
 }
 
 size_t  count_connections(t_graph *graphs)
@@ -103,20 +95,22 @@ void    save_binary(t_gsplit *info, t_graph *graphs)
     size_t          wrote = 0;
     t_output_data   data;
     uint16_t        tmp16;
+    uint32_t        tmp32;
     const size_t    connections = count_connections(graphs);
     
     get_output_tables(&data, info, graphs, connections);
-    tmp16 = htons(data.signature);
+    tmp16 = htole16(data.signature);
     wrote += fwrite(&tmp16, sizeof(tmp16), 1, info->output) * sizeof(tmp16);
-    tmp16 = htons(data.file_size);
+    tmp32 = htole32(data.file_size);
+    wrote += fwrite(&tmp32, sizeof(tmp32), 1, info->output) * sizeof(tmp32);
+    tmp16 = htole16(data.parts_count);
     wrote += fwrite(&tmp16, sizeof(tmp16), 1, info->output) * sizeof(tmp16);
-    tmp16 = htons(data.parts_count);
+    tmp16 = htole16(data.rows_count);
     wrote += fwrite(&tmp16, sizeof(tmp16), 1, info->output) * sizeof(tmp16);
-    tmp16 = htons(data.rows_count);
+    tmp16 = htole16(data.columns_count);
     wrote += fwrite(&tmp16, sizeof(tmp16), 1, info->output) * sizeof(tmp16);
-    tmp16 = htons(data.columns_count);
-    wrote += fwrite(&tmp16, sizeof(tmp16), 1, info->output) * sizeof(tmp16);
-    wrote += write_uint24(info->output, data.nodes_count);
+    tmp32 = htole32(data.nodes_count);
+    wrote += fwrite(&tmp32, sizeof(tmp32), 1, info->output) * sizeof(tmp32);
 
     for (uint32_t i = 0; i < data.nodes_count; i++)
     {
@@ -130,22 +124,22 @@ void    save_binary(t_gsplit *info, t_graph *graphs)
     }
     for (uint32_t i = 0; i < data.parts_count; i++)
     {
-        tmp16 = htons(data.end_table[i]);
-        wrote += fwrite(&tmp16, sizeof(tmp16), 1, info->output) * sizeof(tmp16);
+        tmp32 = htons(data.end_table[i]);
+        wrote += fwrite(&tmp32, sizeof(tmp32), 1, info->output) * sizeof(tmp32);
     }
     for (uint32_t i = 0; i < graphs[0].nodes_num; i++)
     {
-        tmp16 = htons(data.offset_table[i]);
-        wrote += fwrite(&tmp16, sizeof(tmp16), 1, info->output) * sizeof(tmp16);
+        tmp32 = htons(data.offset_table[i]);
+        wrote += fwrite(&tmp32, sizeof(tmp32), 1, info->output) * sizeof(tmp32);
     }
     for (uint32_t i = 0; i < connections; i++)
     {
-        tmp16 = htons(data.edge_table[i]);
-        wrote += fwrite(&tmp16, sizeof(tmp16), 1, info->output) * sizeof(tmp16);
+        tmp32 = htons(data.edge_table[i]);
+        wrote += fwrite(&tmp32, sizeof(tmp32), 1, info->output) * sizeof(tmp32);
     }
     free_output_data(&data);
     if (wrote != data.file_size)
-        printf("ERROR: the file size is not correct!!, %zu but should be %hu\n", wrote, data.file_size);
+        printf("ERROR: the file size is not correct!!, %zu but should be %u\n", wrote, data.file_size);
 }
 
 void    save_text(t_gsplit *info, t_graph *graphs)
@@ -154,10 +148,6 @@ void    save_text(t_gsplit *info, t_graph *graphs)
     const size_t  connections = count_connections(graphs);
     
     get_output_tables(&data, info, graphs, connections);
-    
-    // {//DEBUG!!!!!!!!!!!!!!!!!!
-    //     printf("%c%c\n%d\n", data.signature >> 8, data.signature & 255, data.file_size);
-    // }
     fprintf(info->output, "%d\n%d\n%d\n%d\n", data.parts_count, data.rows_count, data.columns_count, data.nodes_count);
     for (unsigned int i = 0; i < data.nodes_count; i++)
     {
