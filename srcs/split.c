@@ -1,82 +1,87 @@
 #include "gsplit.h"
 
-
-static size_t count_nodes_in_partition(t_graph *graph, int partition) {
-    size_t count = 0;
-    for (size_t i = 0; i < graph->nodes_num; i++) {
-        if (graph->nodes[i].partition == partition) count++;
-    }
-    return count;
+static void calculate_partition_sizes(t_graph *graph, int num_parts, size_t *sizes) {
+    for (int i = 0; i < num_parts; i++) sizes[i] = 0;
+    for (size_t i = 0; i < graph->nodes_num; i++) sizes[graph->nodes[i].partition]++;
 }
 
+static void ensure_internal_connectivity(t_graph *graph, int num_parts) {
+    bool changed;
+    do {
+        changed = false;
+        for (int p = 0; p < num_parts; p++) {
+            bool *visited = calloc(graph->nodes_num, sizeof(bool));
+            int *queue = calloc(graph->nodes_num, sizeof(int));
+            size_t q_start = 0, q_end = 0;
 
-static bool is_partition_connected(t_graph *graph, int partition) {
-    bool *visited = calloc(graph->nodes_num, sizeof(bool));
-    if (!visited) return false;
-
-    
-    size_t start_node = graph->nodes_num;  
-    for (size_t i = 0; i < graph->nodes_num; i++) {
-        if (graph->nodes[i].partition == partition) {
-            start_node = i;
-            break;
-        }
-    }
-
-    if (start_node == graph->nodes_num) {  
-        free(visited);
-        return false;
-    }
-
-    
-    size_t *queue = malloc(graph->nodes_num * sizeof(size_t));
-    if (!queue) {
-        free(visited);
-        return false;
-    }
-
-    size_t front = 0, rear = 0;
-    queue[rear++] = start_node;
-    visited[start_node] = true;
-    size_t visited_count = 1;
-
-    while (front < rear) {
-        size_t current = queue[front++];
-
-        for (size_t i = 0; i < graph->nodes[current].connections_num; i++) {
-            t_node *neighbor = graph->nodes[current].connections[i];
-            size_t neighbor_idx = neighbor - graph->nodes;
-
-            if (neighbor->partition == partition && !visited[neighbor_idx]) {
-                visited[neighbor_idx] = true;
-                queue[rear++] = neighbor_idx;
-                visited_count++;
-            }
-        }
-    }
-
-    free(queue);
-    free(visited);
-    return (visited_count == count_nodes_in_partition(graph, partition));
-}
-
-
-static void fix_disconnected_partitions(t_graph *graph, int num_parts) {
-    for (int p = 0; p < num_parts; p++) {
-        if (!is_partition_connected(graph, p)) {
+            int first = -1;
             for (size_t i = 0; i < graph->nodes_num; i++) {
                 if (graph->nodes[i].partition == p) {
-                    bool has_local_connection = false;
+                    first = i;
+                    break;
+                }
+            }
+            if (first == -1) {
+                free(visited); free(queue);
+                continue;
+            }
+            queue[q_end++] = first;
+            visited[first] = true;
+
+            while (q_start < q_end) {
+                int cur = queue[q_start++];
+                for (size_t j = 0; j < graph->nodes[cur].connections_num; j++) {
+                    t_node *neighbor = graph->nodes[cur].connections[j];
+                    int ni = neighbor - graph->nodes;
+                    if (!visited[ni] && neighbor->partition == p) {
+                        visited[ni] = true;
+                        queue[q_end++] = ni;
+                    }
+                }
+            }
+
+            for (size_t i = 0; i < graph->nodes_num; i++) {
+                if (graph->nodes[i].partition == p && !visited[i]) {
                     for (size_t j = 0; j < graph->nodes[i].connections_num; j++) {
-                        if (graph->nodes[i].connections[j]->partition == p) {
-                            has_local_connection = true;
+                        int np = graph->nodes[i].connections[j]->partition;
+                        if (np != p) {
+                            graph->nodes[i].partition = np;
+                            changed = true;
                             break;
                         }
                     }
+                }
+            }
+            free(visited); free(queue);
+        }
+    } while (changed);
+}
 
-                    if (!has_local_connection && graph->nodes[i].connections_num > 0) {
-                        
-                        graph->nodes[i].partition = graph->nodes[i].connections[0]->partition;
+static void balance_partitions(t_graph *graph, int num_parts, int margin, size_t *sizes) {
+    calculate_partition_sizes(graph, num_parts, sizes);
+    size_t ideal = graph->nodes_num / num_parts;
+    int allowed_diff = ideal * margin / 100;
+    bool balanced = false;
+    while (!balanced) {
+        balanced = true;
+        for (int i = 0; i < num_parts; i++) {
+            if (sizes[i] > ideal + allowed_diff) {
+                for (int j = 0; j < num_parts; j++) {
+                    if (sizes[j] < ideal - allowed_diff) {
+                        for (size_t n = 0; n < graph->nodes_num; n++) {
+                            if (graph->nodes[n].partition != i) continue;
+                            for (size_t c = 0; c < graph->nodes[n].connections_num; c++) {
+                                if (graph->nodes[n].connections[c]->partition == j) {
+                                    graph->nodes[n].partition = j;
+                                    sizes[i]--;
+                                    sizes[j]++;
+                                    balanced = false;
+                                    break;
+                                }
+                            }
+                            if (!balanced) break;
+                        }
+                        if (!balanced) break;
                     }
                 }
             }
@@ -84,40 +89,9 @@ static void fix_disconnected_partitions(t_graph *graph, int num_parts) {
     }
 }
 
-
-void initialize_partitions(t_graph *graph, int num_parts) {
-    size_t part_size = graph->nodes_num / num_parts;
-    size_t remainder = graph->nodes_num % num_parts;
-    
-    size_t current_part = 0;
-    size_t count_in_part = 0;
-    
-    for (size_t i = 0; i < graph->nodes_num; i++) {
-        graph->nodes[i].partition = current_part;
-        count_in_part++;
-        
-        size_t target_size = part_size + (current_part < remainder ? 1 : 0);
-        if (count_in_part >= target_size && current_part < (size_t)(num_parts - 1)) {
-            current_part++;
-            count_in_part = 0;
-        }
-    }
-}
-
-static void calculate_partition_sizes(t_graph *graph, int num_parts, size_t *sizes) {
-    for (int i = 0; i < num_parts; i++) {
-        sizes[i] = 0;
-    }
-    
-    for (size_t i = 0; i < graph->nodes_num; i++) {
-        sizes[graph->nodes[i].partition]++;
-    }
-}
-
 static int compute_gain(t_graph *graph, size_t node_idx, int new_part) {
     int gain = 0;
     int current_part = graph->nodes[node_idx].partition;
-    
     for (size_t i = 0; i < graph->nodes[node_idx].connections_num; i++) {
         t_node *neighbor = graph->nodes[node_idx].connections[i];
         if (neighbor->partition == current_part) gain--;
@@ -126,7 +100,7 @@ static int compute_gain(t_graph *graph, size_t node_idx, int new_part) {
     return gain;
 }
 
-static void    optimize_partitions(t_graph *graph, int num_parts, int margin, size_t *sizes) {
+static void optimize_partitions(t_graph *graph, int num_parts, int margin, size_t *sizes) {
     bool improved;
     int iterations = 0;
     size_t ideal = graph->nodes_num / num_parts;
@@ -136,93 +110,62 @@ static void    optimize_partitions(t_graph *graph, int num_parts, int margin, si
         improved = false;
         t_move best_move = {0, INT_MIN, -1};
         calculate_partition_sizes(graph, num_parts, sizes);
-
         for (size_t i = 0; i < graph->nodes_num; i++) {
             int current_part = graph->nodes[i].partition;
-            
             for (int p = 0; p < num_parts; p++) {
                 if (p == current_part) continue;
-                
+                bool has_neighbor = false;
+                for (size_t j = 0; j < graph->nodes[i].connections_num; j++) {
+                    if (graph->nodes[i].connections[j]->partition == p) {
+                        has_neighbor = true;
+                        break;
+                    }
+                }
+                if (!has_neighbor) continue;
                 if (sizes[p] >= ideal + allowed_diff) continue;
                 if (sizes[current_part] <= ideal - allowed_diff) continue;
-
                 int gain = compute_gain(graph, i, p);
-                int balance_bonus = 0;
-                
-                if (sizes[p] < ideal) balance_bonus += 2;
-                if (sizes[current_part] > ideal) balance_bonus += 2;
-                
-                if ((gain + balance_bonus) > best_move.gain) {
-                    best_move.node_index = i;
-                    best_move.gain = gain + balance_bonus;
-                    best_move.target_part = p;
+                if (gain > best_move.gain) {
+                    best_move = (t_move){i, gain, p};
                 }
             }
         }
-
         if (best_move.target_part != -1) {
-            int old_part = graph->nodes[best_move.node_index].partition;
+            int old = graph->nodes[best_move.node_index].partition;
             graph->nodes[best_move.node_index].partition = best_move.target_part;
-            sizes[old_part]--;
+            sizes[old]--;
             sizes[best_move.target_part]++;
             improved = true;
         }
-
         iterations++;
     } while (improved && iterations < OPTIMIZE_MAX_ITER);
 }
 
-static void balance_partitions(t_graph *graph, int num_parts, int margin, size_t *sizes) {
-    calculate_partition_sizes(graph, num_parts, sizes);
-    
-    size_t ideal = graph->nodes_num / num_parts;
-    int allowed_diff = ideal * margin / 100;
-
-    for (int i = 0; i < num_parts; i++) {
-        while (sizes[i] < ideal - allowed_diff) {
-            int max_part = 0;
-            for (int p = 0; p < num_parts; p++) {
-                if (sizes[p] > sizes[max_part] && p != i) {
-                    max_part = p;
-                }
-            }
-
-            size_t best_node = 0;
-            int best_gain = INT_MIN;
-            
-            for (size_t n = 0; n < graph->nodes_num; n++) {
-                if (graph->nodes[n].partition != max_part) continue;
-                
-                int current_gain = compute_gain(graph, n, i) - 
-                                 compute_gain(graph, n, max_part);
-                
-                if (current_gain > best_gain) {
-                    best_gain = current_gain;
-                    best_node = n;
-                }
-            }
-
-            if (best_gain > INT_MIN) {
-                graph->nodes[best_node].partition = i;
-                sizes[max_part]--;
-                sizes[i]++;
-            } else {
-                break;
-            }
+void initialize_partitions(t_graph *graph, int num_parts) {
+    size_t part_size = graph->nodes_num / num_parts;
+    size_t remainder = graph->nodes_num % num_parts;
+    size_t current_part = 0;
+    size_t count = 0;
+    for (size_t i = 0; i < graph->nodes_num; i++) {
+        graph->nodes[i].partition = current_part;
+        count++;
+        size_t target = part_size + (current_part < remainder ? 1 : 0);
+        if (count >= target && current_part < (size_t)(num_parts - 1)) {
+            current_part++;
+            count = 0;
         }
     }
 }
 
 bool partition_graph(t_graph *graph, int num_parts, int margin) {
-    size_t  *sizes;
-
-    sizes = (size_t *)calloc(sizeof(size_t), num_parts);
-    if (!sizes)
-        return (false);
+    size_t *sizes = calloc(num_parts, sizeof(size_t));
+    if (!sizes) return false;
     initialize_partitions(graph, num_parts);
-    optimize_partitions(graph, num_parts, margin, sizes);
+    ensure_internal_connectivity(graph, num_parts);
     balance_partitions(graph, num_parts, margin, sizes);
-    fix_disconnected_partitions(graph, num_parts);
-    optimize_partitions(graph, num_parts, margin, sizes); 
+    optimize_partitions(graph, num_parts, margin, sizes);
+    ensure_internal_connectivity(graph, num_parts);
+    balance_partitions(graph, num_parts, margin, sizes);
+    free(sizes);
     return true;
 }

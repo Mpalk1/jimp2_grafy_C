@@ -4,7 +4,7 @@ void    print_graphs(t_graph *graph, int graphs_num)
 {
     for (int i = 0; i < graphs_num; i++)
     {
-        printf("\tGraph %i\n", i);
+        printf("\nStarting Graph\n");
         for (size_t j = 0; j < graph[i].nodes_num; j++)
         {
             printf("Node %zu(%zu):", j, graph[i].nodes[j].connections_num);
@@ -21,7 +21,7 @@ void    print_graphs(t_graph *graph, int graphs_num)
 
 void print_graphs1(t_graph *graphs, int graphs_num) {
     for (int i = 0; i < graphs_num; i++) {
-        printf("Graph %d:\n", i + 1);
+        printf("\nGraph Partitions:\n");
 
         if (graphs[i].nodes == NULL) {
             printf("  No nodes in this graph.\n");
