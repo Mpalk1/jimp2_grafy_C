@@ -1,106 +1,105 @@
-  Partition counts: 0:9 1:10 2:10 3:9 4:10 5:11 6:10 7:15 8:10 9:11 
-  Node 0 (Partition 0): Connects to: 72 39 91 4 54 
-  Node 1 (Partition 0): Connects to: 47 4 79 101 71 
-  Node 2 (Partition 7): Connects to: 76 79 5 
-  Node 3 (Partition 3): Connects to: 63 71 80 42 
-  Node 4 (Partition 0): Connects to: 0 1 75 
-  Node 5 (Partition 7): Connects to: 2 49 
-  Node 6 (Partition 8): Connects to: 93 16 98 
-  Node 7 (Partition 4): Connects to: 75 82 50 
-  Node 8 (Partition 2): Connects to: 28 47 34 60 
-  Node 9 (Partition 1): Connects to: 14 53 28 
-  Node 10 (Partition 5): Connects to: 58 57 
-  Node 11 (Partition 4): Connects to: 47 17 24 
-  Node 12 (Partition 4): Connects to: 50 98 47 
-  Node 13 (Partition 6): Connects to: 18 
-  Node 14 (Partition 1): Connects to: 9 63 100 84 32 103 78 
-  Node 15 (Partition 9): Connects to: 23 82 
-  Node 16 (Partition 8): Connects to: 6 72 48 
-  Node 17 (Partition 4): Connects to: 11 104 
-  Node 18 (Partition 6): Connects to: 13 20 70 
-  Node 19 (Partition 6): Connects to: 91 70 
-  Node 20 (Partition 6): Connects to: 18 37 54 67 103 68 
-  Node 21 (Partition 9): Connects to: 97 91 69 89 
-  Node 22 (Partition 9): Connects to: 89 
-  Node 23 (Partition 9): Connects to: 15 63 58 29 57 87 75 50 
-  Node 24 (Partition 4): Connects to: 11 53 47 
-  Node 25 (Partition 6): Connects to: 91 73 
-  Node 26 (Partition 3): Connects to: 37 62 80 
-  Node 27 (Partition 7): Connects to: 76 104 42 77 
-  Node 28 (Partition 2): Connects to: 8 9 
-  Node 29 (Partition 9): Connects to: 23 30 104 51 
-  Node 30 (Partition 5): Connects to: 29 85 82 95 
-  Node 31 (Partition 8): Connects to: 52 45 71 94 
-  Node 32 (Partition 1): Connects to: 14 102 84 
-  Node 33 (Partition 5): Connects to: 55 54 46 
-  Node 34 (Partition 2): Connects to: 8 98 71 
-  Node 35 (Partition 1): Connects to: 63 
-  Node 36 (Partition 1): Connects to: 100 95 41 
-  Node 37 (Partition 3): Connects to: 20 26 50 52 61 99 
-  Node 38 (Partition 7): Connects to: 88 43 49 97 
-  Node 39 (Partition 0): Connects to: 0 45 
-  Node 40 (Partition 2): Connects to: 64 90 
-  Node 41 (Partition 5): Connects to: 36 64 95 72 81 
-  Node 42 (Partition 3): Connects to: 3 27 46 97 48 44 
-  Node 43 (Partition 7): Connects to: 38 
-  Node 44 (Partition 3): Connects to: 42 91 
-  Node 45 (Partition 8): Connects to: 31 39 46 
-  Node 46 (Partition 5): Connects to: 33 42 45 55 81 52 
-  Node 47 (Partition 4): Connects to: 1 8 11 12 24 
-  Node 48 (Partition 8): Connects to: 16 42 
-  Node 49 (Partition 7): Connects to: 5 38 98 89 80 
-  Node 50 (Partition 4): Connects to: 7 12 23 37 58 88 91 66 
-  Node 51 (Partition 9): Connects to: 29 
-  Node 52 (Partition 8): Connects to: 31 37 46 
-  Node 53 (Partition 4): Connects to: 9 24 60 
-  Node 54 (Partition 0): Connects to: 0 20 33 74 92 
-  Node 55 (Partition 5): Connects to: 33 46 58 
-  Node 56 (Partition 2): Connects to: 60 71 
-  Node 57 (Partition 5): Connects to: 10 23 85 
-  Node 58 (Partition 2): Connects to: 10 23 50 55 78 64 
-  Node 59 (Partition 7): Connects to: 96 76 
-  Node 60 (Partition 2): Connects to: 8 53 56 90 
-  Node 61 (Partition 3): Connects to: 37 
-  Node 62 (Partition 3): Connects to: 26 
-  Node 63 (Partition 1): Connects to: 3 14 23 35 102 66 98 
-  Node 64 (Partition 2): Connects to: 40 41 58 
-  Node 65 (Partition 7): Connects to: 78 
-  Node 66 (Partition 4): Connects to: 50 63 
-  Node 67 (Partition 6): Connects to: 20 104 
-  Node 68 (Partition 6): Connects to: 20 72 80 73 
-  Node 69 (Partition 9): Connects to: 21 89 104 
-  Node 70 (Partition 6): Connects to: 18 19 90 92 
-  Node 71 (Partition 2): Connects to: 1 3 31 34 56 93 
-  Node 72 (Partition 6): Connects to: 0 16 41 68 100 96 
-  Node 73 (Partition 6): Connects to: 25 68 84 
-  Node 74 (Partition 0): Connects to: 54 
-  Node 75 (Partition 9): Connects to: 4 7 23 89 
-  Node 76 (Partition 7): Connects to: 2 27 59 78 
-  Node 77 (Partition 7): Connects to: 27 86 
-  Node 78 (Partition 7): Connects to: 14 58 65 76 86 90 96 
-  Node 79 (Partition 7): Connects to: 1 2 
-  Node 80 (Partition 3): Connects to: 3 26 49 68 
-  Node 81 (Partition 5): Connects to: 41 46 
-  Node 82 (Partition 4): Connects to: 7 15 30 
-  Node 83 (Partition 8): Connects to: 98 
-  Node 84 (Partition 1): Connects to: 14 32 73 
-  Node 85 (Partition 5): Connects to: 30 57 95 102 
-  Node 86 (Partition 7): Connects to: 77 78 
-  Node 87 (Partition 5): Connects to: 23 95 
-  Node 88 (Partition 7): Connects to: 38 50 
-  Node 89 (Partition 9): Connects to: 21 22 49 69 75 
-  Node 90 (Partition 2): Connects to: 40 60 70 78 
-  Node 91 (Partition 0): Connects to: 0 19 21 25 44 50 
-  Node 92 (Partition 0): Connects to: 54 70 
-  Node 93 (Partition 8): Connects to: 6 71 101 94 
-  Node 94 (Partition 8): Connects to: 31 93 
-  Node 95 (Partition 5): Connects to: 30 36 41 85 87 
-  Node 96 (Partition 7): Connects to: 59 72 78 
-  Node 97 (Partition 9): Connects to: 21 38 42 
-  Node 98 (Partition 8): Connects to: 6 12 34 49 63 83 
-  Node 99 (Partition 3): Connects to: 37 
-  Node 100 (Partition 1): Connects to: 14 36 72 
-  Node 101 (Partition 0): Connects to: 1 93 
-  Node 102 (Partition 1): Connects to: 32 63 85 
-  Node 103 (Partition 1): Connects to: 14 20 
-  Node 104 (Partition 9): Connects to: 17 27 29 67 69 
+Węzeł 0 (Podciąg 0): Połączony z: 39 4 54 
+  Węzeł 1 (Podciąg 0): Połączony z: 47 4 71 
+  Węzeł 2 (Podciąg 1): Połączony z: 76 79 5 
+  Węzeł 3 (Podciąg 1): Połączony z: 63 80 
+  Węzeł 4 (Podciąg 0): Połączony z: 0 1 75 
+  Węzeł 5 (Podciąg 1): Połączony z: 2 49 
+  Węzeł 6 (Podciąg 1): Połączony z: 93 16 98 
+  Węzeł 7 (Podciąg 0): Połączony z: 75 82 50 
+  Węzeł 8 (Podciąg 0): Połączony z: 28 47 34 60 
+  Węzeł 9 (Podciąg 0): Połączony z: 14 53 28 
+  Węzeł 10 (Podciąg 1): Połączony z: 58 57 
+  Węzeł 11 (Podciąg 0): Połączony z: 47 17 24 
+  Węzeł 12 (Podciąg 0): Połączony z: 50 47 
+  Węzeł 13 (Podciąg 0): Połączony z: 18 
+  Węzeł 14 (Podciąg 0): Połączony z: 9 84 32 103 
+  Węzeł 15 (Podciąg 0): Połączony z: 23 82 
+  Węzeł 16 (Podciąg 1): Połączony z: 6 72 
+  Węzeł 17 (Podciąg 0): Połączony z: 11 
+  Węzeł 18 (Podciąg 0): Połączony z: 13 20 
+  Węzeł 19 (Podciąg 1): Połączony z: 91 70 
+  Węzeł 20 (Podciąg 0): Połączony z: 18 37 54 103 
+  Węzeł 21 (Podciąg 1): Połączony z: 97 91 69 89 
+  Węzeł 22 (Podciąg 1): Połączony z: 89 
+  Węzeł 23 (Podciąg 0): Połączony z: 15 29 75 50 
+  Węzeł 24 (Podciąg 0): Połączony z: 11 53 47 
+  Węzeł 25 (Podciąg 1): Połączony z: 91 73 
+  Węzeł 26 (Podciąg 0): Połączony z: 37 62 
+  Węzeł 27 (Podciąg 1): Połączony z: 76 104 77 
+  Węzeł 28 (Podciąg 0): Połączony z: 8 9 
+  Węzeł 29 (Podciąg 0): Połączony z: 23 30 51 
+  Węzeł 30 (Podciąg 0): Połączony z: 29 82 
+  Węzeł 31 (Podciąg 0): Połączony z: 52 45 71 
+  Węzeł 32 (Podciąg 0): Połączony z: 14 84 
+  Węzeł 33 (Podciąg 0): Połączony z: 55 54 46 
+  Węzeł 34 (Podciąg 0): Połączony z: 8 71 
+  Węzeł 35 (Podciąg 1): Połączony z: 63 
+  Węzeł 36 (Podciąg 1): Połączony z: 100 95 41 
+  Węzeł 37 (Podciąg 0): Połączony z: 20 26 50 52 61 99 
+  Węzeł 38 (Podciąg 1): Połączony z: 88 43 49 97 
+  Węzeł 39 (Podciąg 0): Połączony z: 0 45 
+  Węzeł 40 (Podciąg 1): Połączony z: 64 90 
+  Węzeł 41 (Podciąg 1): Połączony z: 36 64 95 72 81 
+  Węzeł 42 (Podciąg 0): Połączony z: 46 48 44 
+  Węzeł 43 (Podciąg 1): Połączony z: 38 
+  Węzeł 44 (Podciąg 0): Połączony z: 42 
+  Węzeł 45 (Podciąg 0): Połączony z: 31 39 46 
+  Węzeł 46 (Podciąg 0): Połączony z: 33 42 45 55 52 
+  Węzeł 47 (Podciąg 0): Połączony z: 1 8 11 12 24 
+  Węzeł 48 (Podciąg 0): Połączony z: 42 
+  Węzeł 49 (Podciąg 1): Połączony z: 5 38 98 89 80 
+  Węzeł 50 (Podciąg 0): Połączony z: 7 12 23 37 
+  Węzeł 51 (Podciąg 0): Połączony z: 29 
+  Węzeł 52 (Podciąg 0): Połączony z: 31 37 46 
+  Węzeł 53 (Podciąg 0): Połączony z: 9 24 60 
+  Węzeł 54 (Podciąg 0): Połączony z: 0 20 33 74 
+  Węzeł 55 (Podciąg 0): Połączony z: 33 46 
+  Węzeł 56 (Podciąg 0): Połączony z: 60 71 
+  Węzeł 57 (Podciąg 1): Połączony z: 10 85 
+  Węzeł 58 (Podciąg 1): Połączony z: 10 78 64 
+  Węzeł 59 (Podciąg 1): Połączony z: 96 76 
+  Węzeł 60 (Podciąg 0): Połączony z: 8 53 56 
+  Węzeł 61 (Podciąg 0): Połączony z: 37 
+  Węzeł 62 (Podciąg 0): Połączony z: 26 
+  Węzeł 63 (Podciąg 1): Połączony z: 3 35 102 66 98 
+  Węzeł 64 (Podciąg 1): Połączony z: 40 41 58 
+  Węzeł 65 (Podciąg 1): Połączony z: 78 
+  Węzeł 66 (Podciąg 1): Połączony z: 63 
+  Węzeł 67 (Podciąg 1): Połączony z: 104 
+  Węzeł 68 (Podciąg 1): Połączony z: 72 80 73 
+  Węzeł 69 (Podciąg 1): Połączony z: 21 89 104 
+  Węzeł 70 (Podciąg 1): Połączony z: 19 90 92 
+  Węzeł 71 (Podciąg 0): Połączony z: 1 31 34 56 
+  Węzeł 72 (Podciąg 1): Połączony z: 16 41 68 100 96 
+  Węzeł 73 (Podciąg 1): Połączony z: 25 68 
+  Węzeł 74 (Podciąg 0): Połączony z: 54 
+  Węzeł 75 (Podciąg 0): Połączony z: 4 7 23 
+  Węzeł 76 (Podciąg 1): Połączony z: 2 27 59 78 
+  Węzeł 77 (Podciąg 1): Połączony z: 27 86 
+  Węzeł 78 (Podciąg 1): Połączony z: 58 65 76 86 90 96 
+  Węzeł 79 (Podciąg 1): Połączony z: 2 
+  Węzeł 80 (Podciąg 1): Połączony z: 3 49 68 
+  Węzeł 81 (Podciąg 1): Połączony z: 41 
+  Węzeł 82 (Podciąg 0): Połączony z: 7 15 30 
+  Węzeł 83 (Podciąg 1): Połączony z: 98 
+  Węzeł 84 (Podciąg 0): Połączony z: 14 32 
+  Węzeł 85 (Podciąg 1): Połączony z: 57 95 102 
+  Węzeł 86 (Podciąg 1): Połączony z: 77 78 
+  Węzeł 87 (Podciąg 1): Połączony z: 95 
+  Węzeł 88 (Podciąg 1): Połączony z: 38 
+  Węzeł 89 (Podciąg 1): Połączony z: 21 22 49 69 
+  Węzeł 90 (Podciąg 1): Połączony z: 40 70 78 
+  Węzeł 91 (Podciąg 1): Połączony z: 19 21 25 
+  Węzeł 92 (Podciąg 1): Połączony z: 70 
+  Węzeł 93 (Podciąg 1): Połączony z: 6 101 94 
+  Węzeł 94 (Podciąg 1): Połączony z: 93 
+  Węzeł 95 (Podciąg 1): Połączony z: 36 41 85 87 
+  Węzeł 96 (Podciąg 1): Połączony z: 59 72 78 
+  Węzeł 97 (Podciąg 1): Połączony z: 21 38 
+  Węzeł 98 (Podciąg 1): Połączony z: 6 49 63 83 
+  Węzeł 99 (Podciąg 0): Połączony z: 37 
+  Węzeł 100 (Podciąg 1): Połączony z: 36 72 
+  Węzeł 101 (Podciąg 1): Połączony z: 93 
+  Węzeł 102 (Podciąg 1): Połączony z: 63 85 
+  Węzeł 103 (Podciąg 0): Połączony z: 14 20 
+  Węzeł 104 (Podciąg 1): Połączony z: 27 67 69 

@@ -157,7 +157,8 @@ void initialize_partitions(t_graph *graph, int num_parts) {
     }
 }
 
-static void remove_cross_partition_connections(t_graph *graph) {
+static size_t remove_cross_partition_connections(t_graph *graph) {
+    size_t  cut = 0;
     for (size_t i = 0; i < graph->nodes_num; i++) {
         t_node *node = &graph->nodes[i];
         int current_part = node->partition;
@@ -180,16 +181,31 @@ static void remove_cross_partition_connections(t_graph *graph) {
                 new_connections[new_idx++] = node->connections[j];
             }
         }
-
+        cut += node->connections_num - keep_count;
         free(node->connections);
         node->connections = new_connections;
         node->connections_num = keep_count;
     }
+    return (cut);
 }
 
-bool partition_graph(t_graph *graph, int num_parts, int margin) {
+static bool partitions_are_balanced(size_t *sizes, int num_parts, size_t ideal, int margin) {
+    int allowed_diff = ideal * margin / 100;
+    for (int i = 0; i < num_parts; i++) {
+        if (sizes[i] < ideal - allowed_diff || sizes[i] > ideal + allowed_diff) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool partition_graph(t_graph *graph, int num_parts, int margin, bool verbose) {
     size_t *sizes = calloc(num_parts, sizeof(size_t));
-    if (!sizes) return false;
+    if (!sizes)
+    {
+        err_print(ERROR_ALLOC);
+        return (false);
+    }
     initialize_partitions(graph, num_parts);
     calculate_partition_sizes(graph, num_parts, sizes);
     ensure_internal_connectivity(graph, num_parts);
@@ -197,7 +213,16 @@ bool partition_graph(t_graph *graph, int num_parts, int margin) {
     optimize_partitions(graph, num_parts, margin, sizes);
     ensure_internal_connectivity(graph, num_parts);
     balance_partitions(graph, num_parts, margin, sizes);
-    remove_cross_partition_connections(graph);
+    if (verbose)
+        printf("Ilość przecięć: %zu\n", remove_cross_partition_connections(graph));
+    if (!partitions_are_balanced(sizes, num_parts, graph->nodes_num / num_parts, margin))
+    {
+        err_print(ERROR_MARGIN_EXCEEDED);
+        free(sizes);
+        return (false);
+    }
+    else if (verbose)
+        printf("Różnica pomiędzy podciągami mieści się w marginesie.\n");
     free(sizes);
     return true;
 }

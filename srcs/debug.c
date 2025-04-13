@@ -4,10 +4,10 @@ void    print_graphs(t_graph *graph, int graphs_num)
 {
     for (int i = 0; i < graphs_num; i++)
     {
-        printf("\nStarting Graph\n");
+        printf("\nGraf:\n");
         for (size_t j = 0; j < graph[i].nodes_num; j++)
         {
-            printf("Node %zu(%zu):", j, graph[i].nodes[j].connections_num);
+            printf("Węzeł %zu(%zu):", j, graph[i].nodes[j].connections_num);
             fflush(stdout); 
             for (size_t k = 0; k < graph[i].nodes[j].connections_num; k++)
             {
@@ -21,16 +21,16 @@ void    print_graphs(t_graph *graph, int graphs_num)
 
 void print_graphs1(t_graph *graphs, int graphs_num) {
     for (int i = 0; i < graphs_num; i++) {
-        printf("\nGraph Partitions:\n");
+        printf("\nPodgrafy:\n");
 
         if (graphs[i].nodes == NULL) {
-            printf("  No nodes in this graph.\n");
-            continue;
+            printf("  Brak węzłów w grafie.\n");
+            return ;
         }
 
         if (graphs[i].nodes_num == 0) {
-            printf("  No nodes to display.\n");
-            continue;
+            printf("  Brak węzłów w grafie.\n");
+            return ;
         }
         
      
@@ -45,8 +45,8 @@ void print_graphs1(t_graph *graphs, int graphs_num) {
         
         int *part_counts = calloc(partition_count, sizeof(int));
         if (!part_counts) {
-            printf("  Memory allocation failed for partition counts\n");
-            continue;
+            err_print(ERROR_ALLOC);
+            return ;
         }
 
         
@@ -57,7 +57,7 @@ void print_graphs1(t_graph *graphs, int graphs_num) {
             }
         }
 
-        printf("  Partition counts: ");
+        printf("  Ilość węzłów w podgrafach: ");
         for (int p = 0; p < partition_count; p++) {
             printf("%d:%d ", p, part_counts[p]);
         }
@@ -65,10 +65,10 @@ void print_graphs1(t_graph *graphs, int graphs_num) {
 
         
         for (size_t j = 0; j < graphs[i].nodes_num; j++) {
-            printf("  Node %zu (Partition %d): ", j, graphs[i].nodes[j].partition);
+            printf("  Węzeł %zu (Podciąg %d): ", j, graphs[i].nodes[j].partition);
             
             if (graphs[i].nodes[j].connections_num > 0) {
-                printf("Connects to: ");
+                printf("Połączony z: ");
                 for (size_t k = 0; k < graphs[i].nodes[j].connections_num; k++) {
                     t_node *connected = graphs[i].nodes[j].connections[k];
                     printf("%ld ", connected - graphs[i].nodes);

@@ -15,7 +15,7 @@ with open("./testing/Plik2.txt") as f:
 
 G = nx.Graph()
 for line in graph_lines:
-    match = re.match(r"Node (\d+)\(\d+\): ([\d ]+)", line)
+    match = re.match(r"Węzeł (\d+)\(\d+\): ([\d ]+)", line)
     if match:
         node = int(match.group(1))
         neighbors = list(map(int, match.group(2).split()))
@@ -24,7 +24,7 @@ for line in graph_lines:
 
 
 node_to_partition = {}
-partition_re = re.compile(r"Node (\d+) \(Partition (\d+)\):")
+partition_re = re.compile(r"Węzeł (\d+) \(Podciąg (\d+)\):")
 for line in partition_lines:
     match = partition_re.search(line)
     if match:

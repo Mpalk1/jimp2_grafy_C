@@ -26,16 +26,23 @@ int	main(int argc, char **argv)
 	graphs = alloc_graphs(&info);
 	rewind(info.input);
 	load_graphs(&info, graphs);
-	print_graphs(graphs, info.graphs_num);
-	// start algorytmu
-	partition_graph(&graphs[0], options.parts, options.margin);
-	print_graphs1(graphs, info.graphs_num);
-	// sprawdzic czy w marginesie
-	// zliczyc ilosc przeciec
+	if (!partition_graph(&graphs[0], options.parts, options.margin, info.opts->verbose))
+	{
+		free_gsplit(&info);
+		free_graphs(graphs, info.graphs_num);
+		return (EXIT_FAILURE);
+	}
+	// print_graphs(graphs, 1);
+	if (info.opts->verbose)
+		print_graphs1(graphs, info.graphs_num);
+	if (info.opts->verbose)
+		printf("Graf został podzielony, zapisywanie grafu.\n");
 	if (info.opts->binary)
 		save_binary(&info, graphs);
 	else
 		save_text(&info, graphs);
+	if (info.opts->verbose)
+		printf("Graf zapisany, wychodzenie z programu.\n");
 	free_gsplit(&info);
 	free_graphs(graphs, info.graphs_num);
 	return (EXIT_SUCCESS);

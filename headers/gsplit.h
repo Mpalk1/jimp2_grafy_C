@@ -12,12 +12,10 @@
 # include <unistd.h> // ssize_t
 # include <endian.h>
 
-# define MAX_MARGIN 50 // <-- do ustalenia
+# define MAX_MARGIN 100 // <-- do ustalenia
 
 # define TEXT_BOLD "\e[1m"
 # define TEXT_DEFAULT "\e[m"
-
-// # define DELETED_NODE -42
 
 # define BUFFER_SIZE 1024
 
@@ -33,6 +31,7 @@
 # define ERROR_MARGIN_NOT_UINT "Margines musi być w formacie dodatniej liczby całkowitej"
 # define ERROR_INVALID_EXTENSION "Nieprawidłowe rozszerzenie pliku - oczekiwano .csrrg"
 # define ERROR_INVALID_NAME "Nieprawidłowa nazwa pliku - plik musi posiadać nazwę"
+# define ERROR_MARGIN_EXCEEDED "Przekroczono wartość marginesu"
 
 /*
 Zawiera konfiguracje z opcji
@@ -171,6 +170,6 @@ void				print_graphs1(t_graph *graphs, int graphs_num);
 
 //	SPLIT.C
 
-bool				partition_graph(t_graph *graph, int num_parts, int margin);
+bool				partition_graph(t_graph *graph, int num_parts, int margin, bool verbose);
 
 #endif

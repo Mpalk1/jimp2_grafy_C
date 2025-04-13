@@ -1,5 +1,5 @@
 COMPILER = clang
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g -O3
 
 NAME = gsplit
 
