@@ -157,15 +157,47 @@ void initialize_partitions(t_graph *graph, int num_parts) {
     }
 }
 
+static void remove_cross_partition_connections(t_graph *graph) {
+    for (size_t i = 0; i < graph->nodes_num; i++) {
+        t_node *node = &graph->nodes[i];
+        int current_part = node->partition;
+
+        size_t keep_count = 0;
+        for (size_t j = 0; j < node->connections_num; j++) {
+            if (node->connections[j]->partition == current_part) {
+                keep_count++;
+            }
+        }
+
+        if (keep_count == 0 || keep_count == node->connections_num) continue;
+
+        t_node **new_connections = (t_node **)calloc(keep_count, sizeof(t_node *));
+        if (!new_connections) continue;
+
+        size_t new_idx = 0;
+        for (size_t j = 0; j < node->connections_num; j++) {
+            if (node->connections[j]->partition == current_part) {
+                new_connections[new_idx++] = node->connections[j];
+            }
+        }
+
+        free(node->connections);
+        node->connections = new_connections;
+        node->connections_num = keep_count;
+    }
+}
+
 bool partition_graph(t_graph *graph, int num_parts, int margin) {
     size_t *sizes = calloc(num_parts, sizeof(size_t));
     if (!sizes) return false;
     initialize_partitions(graph, num_parts);
+    calculate_partition_sizes(graph, num_parts, sizes);
     ensure_internal_connectivity(graph, num_parts);
     balance_partitions(graph, num_parts, margin, sizes);
     optimize_partitions(graph, num_parts, margin, sizes);
     ensure_internal_connectivity(graph, num_parts);
     balance_partitions(graph, num_parts, margin, sizes);
+    remove_cross_partition_connections(graph);
     free(sizes);
     return true;
 }
