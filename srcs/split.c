@@ -199,7 +199,7 @@ static bool partitions_are_balanced(size_t *sizes, int num_parts, size_t ideal, 
     return true;
 }
 
-bool partition_graph(t_graph *graph, int num_parts, int margin, bool verbose) {
+bool partition_graph(t_graph *graph, int num_parts, int margin, t_options *opts) {
     size_t *sizes = calloc(num_parts, sizeof(size_t));
     if (!sizes)
     {
@@ -213,15 +213,15 @@ bool partition_graph(t_graph *graph, int num_parts, int margin, bool verbose) {
     optimize_partitions(graph, num_parts, margin, sizes);
     ensure_internal_connectivity(graph, num_parts);
     balance_partitions(graph, num_parts, margin, sizes);
-    if (verbose)
+    if (opts->verbose)
         printf("Ilość przecięć: %zu\n", remove_cross_partition_connections(graph));
-    if (!partitions_are_balanced(sizes, num_parts, graph->nodes_num / num_parts, margin))
+    if (!partitions_are_balanced(sizes, num_parts, graph->nodes_num / num_parts, margin) && !opts->force)
     {
         err_print(ERROR_MARGIN_EXCEEDED);
         free(sizes);
         return (false);
     }
-    else if (verbose)
+    else if (opts->verbose)
         printf("Różnica pomiędzy podciągami mieści się w marginesie.\n");
     free(sizes);
     return true;

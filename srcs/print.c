@@ -5,6 +5,7 @@ void	print_help(void)
 	printf(TEXT_BOLD "Użycie: ./gsplit [opcje]\n");
 	printf("Opcje:\n" TEXT_DEFAULT);
 	printf("  -h, --help\t\tWyświetl pomoc\n");
+	printf("  -f, --force\t\tWymuś utworzenie grafu\n");
 	printf("  -v, --verbose\t\tWłącz tryb szczegółowy\n");
 	printf("  -i, --input\t\tPlik wejściowy (domyślnie stdin)\n");
 	printf("  -o, --output\t\tPlik wyjściowy (domyślnie stdout)\n");
@@ -22,4 +23,5 @@ void	print_conf(t_options *options)
 	printf("Liczba części: %d\n", options->parts);
 	printf("Margines: %d%%\n", options->margin);
 	printf("Format binarny: %s\n", options->binary ? "Tak" : "Nie");
+	printf("Wymuszać utworzenie grafu: %s\n", options->force ? "Tak" : "Nie");
 }

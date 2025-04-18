@@ -15,7 +15,7 @@ int	main(int argc, char **argv)
 	t_gsplit	info;
 	t_graph		*graphs;
 
-	options = (t_options){NULL, NULL, 2, 10, false, false};
+	options = (t_options){NULL, NULL, 2, 10, false, false, false};
 	load_options(&options, argc, argv);
 	info.opts = &options;
 	info.node_index = NULL;
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	graphs = alloc_graphs(&info);
 	rewind(info.input);
 	load_graphs(&info, graphs);
-	if (!partition_graph(&graphs[0], options.parts, options.margin, info.opts->verbose))
+	if (!partition_graph(&graphs[0], options.parts, options.margin, info.opts))
 	{
 		free_gsplit(&info);
 		free_graphs(graphs, info.graphs_num);

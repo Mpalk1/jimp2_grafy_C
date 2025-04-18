@@ -44,6 +44,7 @@ typedef struct s_options
 	short			margin;
 	bool			verbose;
 	bool			binary;
+	bool			force;
 }					t_options;
 
 typedef struct s_node
@@ -170,6 +171,6 @@ void				print_graphs1(t_graph *graphs, int graphs_num);
 
 //	SPLIT.C
 
-bool				partition_graph(t_graph *graph, int num_parts, int margin, bool verbose);
+bool				partition_graph(t_graph *graph, int num_parts, int margin, t_options *opts);
 
 #endif

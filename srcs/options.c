@@ -35,6 +35,7 @@ void	load_options(t_options *opts, int argc, char **argv)
 {
 	static struct option long_options[] = {
 		{"help", no_argument, 0, 'h'},
+		{"force", no_argument, 0, 'f'},
 		{"verbose", no_argument, 0, 'v'},
 		{"input", required_argument, 0, 'i'},
 		{"output", required_argument, 0, 'o'},
@@ -45,10 +46,13 @@ void	load_options(t_options *opts, int argc, char **argv)
 	};
 	int opt;
 
-	while ((opt = getopt_long(argc, argv, "hvi:o:p:m:b", long_options, NULL)) != -1) {
+	while ((opt = getopt_long(argc, argv, "hfvi:o:p:m:b", long_options, NULL)) != -1) {
 		switch (opt) {
 			case 'h':
 				print_help();
+				break;
+			case 'f':
+				opts->force = true;
 				break;
 			case 'v':
 				opts->verbose = true;
