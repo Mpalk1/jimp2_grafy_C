@@ -18,13 +18,11 @@ static int compute_gain(t_graph *graph, size_t node_idx, int new_part) {
 }
 
 static void optimize_partitions(t_graph *graph, int num_parts, int margin, size_t *sizes) {
-    bool improved;
     int iterations = 0;
     size_t ideal = graph->nodes_num / num_parts;
     int allowed_diff = ideal * margin / 100;
 
     do {
-        improved = false;
         t_move best_move = {0, INT_MIN, -1};
         calculate_partition_sizes(graph, num_parts, sizes);
 
@@ -42,7 +40,6 @@ static void optimize_partitions(t_graph *graph, int num_parts, int margin, size_
                     }
                 }
                 if (!has_neighbor_in_p) continue;
-
                 if (sizes[p] >= ideal + allowed_diff) continue;
                 if (sizes[current_part] <= ideal - allowed_diff) continue;
 
@@ -64,16 +61,15 @@ static void optimize_partitions(t_graph *graph, int num_parts, int margin, size_
             graph->nodes[best_move.node_index].partition = best_move.target_part;
             sizes[old_part]--;
             sizes[best_move.target_part]++;
-            improved = true;
         }
 
         iterations++;
     } while (iterations < OPTIMIZE_MAX_ITER);
 }
 
-static void fix_disconnected_partitions(t_graph *graph, int num_parts) {
+static void fix_disconnected_partitions(t_graph *graph, int num_parts, int margin) {
     size_t ideal = graph->nodes_num / num_parts;
-    int allowed_diff = ideal * 10 / 100;
+    int allowed_diff = ideal * margin / 100;
     size_t *sizes = calloc(num_parts, sizeof(size_t));
     if (!sizes) return;
     calculate_partition_sizes(graph, num_parts, sizes);
@@ -96,6 +92,9 @@ static void fix_disconnected_partitions(t_graph *graph, int num_parts) {
                 }
 
                 if (!has_local_connection && graph->nodes[i].connections_num > 0) {
+                    if (sizes[p] <= ideal - allowed_diff)
+                        continue;
+
                     int best_partition = -1;
                     int most_connections = 0;
 
@@ -105,7 +104,8 @@ static void fix_disconnected_partitions(t_graph *graph, int num_parts) {
                     for (size_t j = 0; j < graph->nodes[i].connections_num; j++) {
                         int neighbor_part = graph->nodes[i].connections[j]->partition;
                         partition_counts[neighbor_part]++;
-                        if (partition_counts[neighbor_part] > most_connections && sizes[neighbor_part] < ideal + allowed_diff) {
+                        if (partition_counts[neighbor_part] > most_connections &&
+                            sizes[neighbor_part] < ideal + allowed_diff) {
                             most_connections = partition_counts[neighbor_part];
                             best_partition = neighbor_part;
                         }
@@ -128,7 +128,8 @@ static void fix_disconnected_partitions(t_graph *graph, int num_parts) {
     free(sizes);
 }
 
-static void remove_cross_partition_connections(t_graph *graph) {
+static size_t remove_cross_partition_connections(t_graph *graph) {
+    size_t total_removed = 0;
     for (size_t i = 0; i < graph->nodes_num; i++) {
         t_node *node = &graph->nodes[i];
         int current_part = node->partition;
@@ -139,6 +140,9 @@ static void remove_cross_partition_connections(t_graph *graph) {
                 keep_count++;
             }
         }
+
+        if (keep_count < node->connections_num)
+            total_removed += node->connections_num - keep_count;
 
         if (keep_count == 0 || keep_count == node->connections_num) continue;
 
@@ -156,6 +160,7 @@ static void remove_cross_partition_connections(t_graph *graph) {
         node->connections = new_connections;
         node->connections_num = keep_count;
     }
+    return total_removed;
 }
 
 static bool partitions_are_balanced(size_t *sizes, int num_parts, size_t ideal, int margin) {
@@ -204,6 +209,7 @@ static void balance_partitions(t_graph *graph, int num_parts, int margin, size_t
                         if (!balanced) break;
                     }
                 }
+                if (!balanced) break;
             }
         }
     }
@@ -228,7 +234,7 @@ void initialize_partitions(t_graph *graph, int num_parts) {
     }
 }
 
-bool partition_graph(t_graph *graph, int num_parts, int margin) {
+bool partition_graph(t_graph *graph, int num_parts, int margin, t_options *opts) {
     size_t *sizes = calloc(num_parts, sizeof(size_t));
     if (!sizes) return false;
 
@@ -237,15 +243,22 @@ bool partition_graph(t_graph *graph, int num_parts, int margin) {
     initialize_partitions(graph, num_parts);
     optimize_partitions(graph, num_parts, margin, sizes);
     balance_partitions(graph, num_parts, margin, sizes);
-    fix_disconnected_partitions(graph, num_parts);
+    fix_disconnected_partitions(graph, num_parts, margin);
     optimize_partitions(graph, num_parts, margin, sizes);
-    fix_disconnected_partitions(graph, num_parts);
+    fix_disconnected_partitions(graph, num_parts, margin);
     balance_partitions(graph, num_parts, margin, sizes);
-    remove_cross_partition_connections(graph);
+
+    size_t cuts = remove_cross_partition_connections(graph);
+    if (opts->verbose)
+        printf("Ilość przecięć: %zu\n", cuts);
 
     calculate_partition_sizes(graph, num_parts, sizes);
-    if (!partitions_are_balanced(sizes, num_parts, ideal, margin)) {
-        fprintf(stderr, "Warning: partition balance exceeded margin\n");
+    if (!partitions_are_balanced(sizes, num_parts, ideal, margin) && !opts->force) {
+        err_print(ERROR_MARGIN_EXCEEDED);
+        free(sizes);
+        return false;
+    } else if (opts->verbose) {
+        printf("Różnica pomiędzy podciągami mieści się w marginesie.\n");
     }
 
     free(sizes);
