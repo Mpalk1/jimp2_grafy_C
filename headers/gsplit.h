@@ -19,7 +19,7 @@
 
 # define BUFFER_SIZE 1024
 
-# define OPTIMIZE_MAX_ITER 50
+# define OPTIMIZE_MAX_ITER 10000
 
 # define ERROR_ALLOC "Nie udało się przydzielić pamięci"
 # define ERROR_FORMAT "Nieprawidłowy format pliku wejściowego"
