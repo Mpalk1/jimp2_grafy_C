@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	rewind(info.input);
 	load_graphs(&info, graphs);
 	printf("\n*****Oryginalny graf*****");
-	//print_graphs(graphs, 1);
+	print_graphs(graphs, 1);
 	if (!partition_graph(&graphs[0], options.parts, options.margin, info.opts))
 	{
 		free_gsplit(&info);
@@ -38,9 +38,10 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	if (info.opts->verbose){
-		//printf("\n*****Podzielony graf*****");
-		//print_graphs1(graphs, info.graphs_num);
+		printf("\n*****Podzielony graf*****");
+		print_graphs1(graphs, info.graphs_num);
 	}
+	
 	if (info.opts->verbose)
 		printf("Graf został podzielony, zapisywanie grafu.\n");
 	if (info.opts->binary)
