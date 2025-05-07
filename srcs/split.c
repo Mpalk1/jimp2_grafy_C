@@ -498,8 +498,8 @@ bool make_subgraphs(t_graph *graph, int num_parts, int margin,
         }
     }
 
-    calculate_partition_sizes(graph, num_parts, sizes);
-    if (!partitions_are_balanced(sizes, num_parts, ideal, margin)) {
+    calculate_subgraph_sizes(graph, num_parts, sizes);
+    if (!subgraphs_are_balanced(sizes, num_parts, ideal, margin)) {
         if (opts->verbose && opts->force) {
             printf("Rożnica pomiędzy podgrafami nie mieści sie w marginesie, wymuszanie tworzenia grafu.\n");
         } else if (!opts->force) {
