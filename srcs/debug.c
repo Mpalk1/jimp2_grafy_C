@@ -36,8 +36,8 @@ void print_graphs1(t_graph *graphs, int graphs_num) {
      
         int max_partition = 0;
         for (size_t j = 0; j < graphs[i].nodes_num; j++) {
-            if (graphs[i].nodes[j].partition > max_partition) {
-                max_partition = graphs[i].nodes[j].partition;
+            if (graphs[i].nodes[j].subgraph > max_partition) {
+                max_partition = graphs[i].nodes[j].subgraph;
             }
         }
         int partition_count = max_partition + 1;
@@ -51,7 +51,7 @@ void print_graphs1(t_graph *graphs, int graphs_num) {
 
         
         for (size_t j = 0; j < graphs[i].nodes_num; j++) {
-            int part = graphs[i].nodes[j].partition;
+            int part = graphs[i].nodes[j].subgraph;
             if (part >= 0 && part < partition_count) {
                 part_counts[part]++;
             }
@@ -65,7 +65,7 @@ void print_graphs1(t_graph *graphs, int graphs_num) {
 
         
         for (size_t j = 0; j < graphs[i].nodes_num; j++) {
-            printf("  Węzeł %zu (Podciąg %d): ", j, graphs[i].nodes[j].partition);
+            printf("  Węzeł %zu (Podgraf %d): ", j, graphs[i].nodes[j].subgraph);
             
             if (graphs[i].nodes[j].connections_num > 0) {
                 printf("Połączony z: ");

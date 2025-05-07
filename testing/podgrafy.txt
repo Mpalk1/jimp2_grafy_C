@@ -1,0 +1,105 @@
+  Węzeł 0 (Podgraf 0): Połączony z: 72 91 54
+  Węzeł 1 (Podgraf 1): Połączony z: 47 4 101
+  Węzeł 2 (Podgraf 5): Połączony z: 79 5
+  Węzeł 3 (Podgraf 8): Połączony z: 71
+  Węzeł 4 (Podgraf 1): Połączony z: 1 75
+  Węzeł 5 (Podgraf 5): Połączony z: 2 49
+  Węzeł 6 (Podgraf 6): Połączony z: 93 16 98
+  Węzeł 7 (Podgraf 7): Połączony z: 82 50
+  Węzeł 8 (Podgraf 8): Połączony z: 28 34 60
+  Węzeł 9 (Podgraf 9): Połączony z: 14 53
+  Węzeł 10 (Podgraf 7): Połączony z: 58
+  Węzeł 11 (Podgraf 1): Połączony z: 47 17 24
+  Węzeł 12 (Podgraf 1): Połączony z: 47
+  Węzeł 13 (Podgraf 9): Połączony z: 18
+  Węzeł 14 (Podgraf 9): Połączony z: 9 84 32 103
+  Węzeł 15 (Podgraf 7): Połączony z: 82
+  Węzeł 16 (Podgraf 6): Połączony z: 6 48
+  Węzeł 17 (Podgraf 1): Połączony z: 11
+  Węzeł 18 (Podgraf 9): Połączony z: 13 20
+  Węzeł 19 (Podgraf 0): Połączony z: 91 70
+  Węzeł 20 (Podgraf 9): Połączony z: 18 103
+  Węzeł 21 (Podgraf 5): Połączony z: 97 69
+  Węzeł 22 (Podgraf 1): Połączony z: 89
+  Węzeł 23 (Podgraf 3): Połączony z: 63 29 87
+  Węzeł 24 (Podgraf 1): Połączony z: 11 47
+  Węzeł 25 (Podgraf 0): Połączony z: 91 73
+  Węzeł 26 (Podgraf 5): Połączony z: 62 80
+  Węzeł 27 (Podgraf 2): Połączony z: 76 104 77
+  Węzeł 28 (Podgraf 8): Połączony z: 8
+  Węzeł 29 (Podgraf 3): Połączony z: 23 51
+  Węzeł 30 (Podgraf 7): Połączony z: 82
+  Węzeł 31 (Podgraf 6): Połączony z: 45 94
+  Węzeł 32 (Podgraf 9): Połączony z: 14 102 84
+  Węzeł 33 (Podgraf 4): Połączony z: 55 46
+  Węzeł 34 (Podgraf 8): Połączony z: 8 71
+  Węzeł 35 (Podgraf 3): Połączony z: 63
+  Węzeł 36 (Podgraf 0): Połączony z: 100 95 41
+  Węzeł 37 (Podgraf 7): Połączony z: 50 61 99
+  Węzeł 38 (Podgraf 5): Połączony z: 88 43 49 97
+  Węzeł 39 (Podgraf 6): Połączony z: 45
+  Węzeł 40 (Podgraf 8): Połączony z: 64 90
+  Węzeł 41 (Podgraf 0): Połączony z: 36 95 72
+  Węzeł 42 (Podgraf 4): Połączony z: 46 44
+  Węzeł 43 (Podgraf 5): Połączony z: 38
+  Węzeł 44 (Podgraf 4): Połączony z: 42
+  Węzeł 45 (Podgraf 6): Połączony z: 31 39
+  Węzeł 46 (Podgraf 4): Połączony z: 33 42 55 81 52
+  Węzeł 47 (Podgraf 1): Połączony z: 1 11 12 24
+  Węzeł 48 (Podgraf 6): Połączony z: 16
+  Węzeł 49 (Podgraf 5): Połączony z: 5 38 80
+  Węzeł 50 (Podgraf 7): Połączony z: 7 37 58
+  Węzeł 51 (Podgraf 3): Połączony z: 29
+  Węzeł 52 (Podgraf 4): Połączony z: 46
+  Węzeł 53 (Podgraf 9): Połączony z: 9
+  Węzeł 54 (Podgraf 0): Połączony z: 0 74 92
+  Węzeł 55 (Podgraf 4): Połączony z: 33 46
+  Węzeł 56 (Podgraf 8): Połączony z: 60 71
+  Węzeł 57 (Podgraf 9): Połączony z: 85
+  Węzeł 58 (Podgraf 7): Połączony z: 10 50
+  Węzeł 59 (Podgraf 2): Połączony z: 96 76
+  Węzeł 60 (Podgraf 8): Połączony z: 8 56 90
+  Węzeł 61 (Podgraf 7): Połączony z: 37
+  Węzeł 62 (Podgraf 5): Połączony z: 26
+  Węzeł 63 (Podgraf 3): Połączony z: 23 35 66
+  Węzeł 64 (Podgraf 8): Połączony z: 40
+  Węzeł 65 (Podgraf 2): Połączony z: 78
+  Węzeł 66 (Podgraf 3): Połączony z: 63
+  Węzeł 67 (Podgraf 2): Połączony z: 104
+  Węzeł 68 (Podgraf 0): Połączony z: 72 73
+  Węzeł 69 (Podgraf 5): Połączony z: 21
+  Węzeł 70 (Podgraf 0): Połączony z: 19 92
+  Węzeł 71 (Podgraf 8): Połączony z: 3 34 56
+  Węzeł 72 (Podgraf 0): Połączony z: 0 41 68 100
+  Węzeł 73 (Podgraf 0): Połączony z: 25 68
+  Węzeł 74 (Podgraf 0): Połączony z: 54
+  Węzeł 75 (Podgraf 1): Połączony z: 4 89
+  Węzeł 76 (Podgraf 2): Połączony z: 27 59 78
+  Węzeł 77 (Podgraf 2): Połączony z: 27 86
+  Węzeł 78 (Podgraf 2): Połączony z: 65 76 86 96
+  Węzeł 79 (Podgraf 5): Połączony z: 2
+  Węzeł 80 (Podgraf 5): Połączony z: 26 49
+  Węzeł 81 (Podgraf 4): Połączony z: 46
+  Węzeł 82 (Podgraf 7): Połączony z: 7 15 30
+  Węzeł 83 (Podgraf 6): Połączony z: 98
+  Węzeł 84 (Podgraf 9): Połączony z: 14 32
+  Węzeł 85 (Podgraf 9): Połączony z: 57 102
+  Węzeł 86 (Podgraf 2): Połączony z: 77 78
+  Węzeł 87 (Podgraf 3): Połączony z: 23
+  Węzeł 88 (Podgraf 5): Połączony z: 38
+  Węzeł 89 (Podgraf 1): Połączony z: 22 75
+  Węzeł 90 (Podgraf 8): Połączony z: 40 60
+  Węzeł 91 (Podgraf 0): Połączony z: 0 19 25
+  Węzeł 92 (Podgraf 0): Połączony z: 54 70
+  Węzeł 93 (Podgraf 6): Połączony z: 6 94
+  Węzeł 94 (Podgraf 6): Połączony z: 31 93
+  Węzeł 95 (Podgraf 0): Połączony z: 36 41
+  Węzeł 96 (Podgraf 2): Połączony z: 59 78
+  Węzeł 97 (Podgraf 5): Połączony z: 21 38
+  Węzeł 98 (Podgraf 6): Połączony z: 6 83
+  Węzeł 99 (Podgraf 7): Połączony z: 37
+  Węzeł 100 (Podgraf 0): Połączony z: 36 72
+  Węzeł 101 (Podgraf 1): Połączony z: 1
+  Węzeł 102 (Podgraf 9): Połączony z: 32 85
+  Węzeł 103 (Podgraf 9): Połączony z: 14 20
+  Węzeł 104 (Podgraf 2): Połączony z: 27 67s

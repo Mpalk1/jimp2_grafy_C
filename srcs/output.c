@@ -61,7 +61,7 @@ void    get_output_tables(t_output_data *data, t_gsplit *info, t_graph *graphs, 
     {
         for (size_t i = 0; i < graphs[0].nodes_num; i++)
         {
-            if (part == graphs[0].nodes[i].partition)
+            if (part == graphs[0].nodes[i].subgraph)
             {
                 t_node *node = &graphs[0].nodes[i];
                 for (size_t j = 0; j < node->connections_num; j++)

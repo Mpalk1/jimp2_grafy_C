@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	load_graphs(&info, graphs);
 	printf("\n*****Oryginalny graf*****");
 	//print_graphs(graphs, 1);
-	if (!partition_graph(&graphs[0], options.parts, options.margin, info.opts))
+	if (!make_subgraphs(&graphs[0], options.parts, options.margin, info.opts))
 	{
 		free_gsplit(&info);
 		free_graphs(graphs, info.graphs_num);
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 	}
 	if (info.opts->verbose){
 		printf("\n*****Podzielony graf*****");
-		//print_graphs1(graphs, info.graphs_num);
+		print_graphs1(graphs, info.graphs_num);
 	}
 	
 	if (info.opts->verbose)

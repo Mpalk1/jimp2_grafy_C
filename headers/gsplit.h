@@ -9,10 +9,10 @@
 # include <stdlib.h>
 # include <string.h>
 # include <time.h>
-# include <unistd.h> // ssize_t
+# include <unistd.h>
 # include <endian.h>
 
-# define MAX_MARGIN 100 // <-- do ustalenia
+# define MAX_MARGIN 100
 
 # define TEXT_BOLD "\e[1m"
 # define TEXT_DEFAULT "\e[m"
@@ -52,7 +52,7 @@ typedef struct s_node
 {
 	struct s_node	**connections;
 	size_t			connections_num;
-	int partition; // numer podgrafu do ktorego nalezy wezel
+	int subgraph; // numer podgrafu do ktorego nalezy wezel
 }					t_node;
 
 typedef struct s_graph
@@ -172,6 +172,6 @@ void				print_graphs1(t_graph *graphs, int graphs_num);
 
 //	SPLIT.C
 
-bool				partition_graph(t_graph *graph, int num_parts, int margin, t_options *opts);
+bool				make_subgraphs(t_graph *graph, int num_parts, int margin, t_options *opts);
 
 #endif

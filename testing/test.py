@@ -3,51 +3,55 @@ import matplotlib.pyplot as plt
 import re
 import numpy as np
 
-# plik do wizualnego debugowania algorytmu
-# nie jest czescia programu
-
-# Initialize the graph
+# 1) Utwórz pusty graf
 G = nx.Graph()
 
-# Read data from file
-with open("./testing/Plik2.txt", 'r', encoding='utf-8') as file:
-    for line in file:
+# 2) Wczytaj dane z pliku
+with open("./testing/podgrafy.txt", encoding="utf-8") as f:
+    for line in f:
         line = line.strip()
-        match = re.match(r'Węzeł (\d+) \(Podciąg (\d+)\): Połączony z: ([\d\s]+)', line)
-        if match:
-            node = int(match.group(1))
-            podciag = int(match.group(2))
-            connections = list(map(int, match.group(3).split()))
-            # Add node with podciag attribute
-            G.add_node(node, podciag=podciag)
-            # Add edges
-            for neighbor in connections:
-                G.add_edge(node, neighbor)
+        # dopasuj: Węzeł <node> (Podgraf <pg>): Połączony z: <lista sąsiadów>
+        m = re.match(r'Węzeł\s+(\d+)\s+\(Podgraf\s+(\d+)\):\s+Połączony z:\s*(.*)', line)
+        if not m:
+            continue
+        node = int(m.group(1))
+        podgraf = int(m.group(2))
+        # sparsuj listę sąsiadów, mogą być rozdzielone spacjami
+        neighbors = [int(x) for x in m.group(3).split() if x.isdigit()]
 
-# Prepare colors for podciags
-podciags = list(nx.get_node_attributes(G, 'podciag').values())
-unique_podciags = sorted(set(podciags))
-num_podciags = len(unique_podciags)
+        # dodaj wierzchołek z atrybutem 'podgraf'
+        G.add_node(node, podgraf=podgraf)
+        # dodaj krawędzie (nie dubluje, bo networkx.Graph())
+        for nb in neighbors:
+            G.add_edge(node, nb)
 
-# Create a colormap with 100 distinct colors
-if num_podciags <= 20:
-    # Use tab20 if we have few enough categories
-    colors = plt.cm.tab20.colors[:num_podciags]
+# 3) Przygotuj paletę kolorów wg liczby unikalnych podgrafów
+pod_vals = [data['podgraf'] for _, data in G.nodes(data=True)]
+unique_p = sorted(set(pod_vals))
+n_p = len(unique_p)
+
+if n_p <= 20:
+    palette = plt.cm.tab20.colors[:n_p]
 else:
-    # Create a custom colormap with 100 distinct colors
-    colormap = plt.cm.get_cmap('gist_ncar', 100)  # Can produce up to 256 distinct colors
-    colors = [colormap(i) for i in np.linspace(0, 1, num_podciags)]
+    cmap = plt.cm.get_cmap('gist_ncar', n_p)
+    palette = [cmap(i) for i in range(n_p)]
 
-# Create mapping from podciag to color index
-podciag_to_index = {podciag: idx for idx, podciag in enumerate(unique_podciags)}
+# mapowanie numer podgraf → indeks palety
+map_p = {p: i for i, p in enumerate(unique_p)}
+# lista kolorów dla każdego wierzchołka w kolejności G.nodes()
+colors = [palette[ map_p[G.nodes[v]['podgraf']] ] for v in G.nodes()]
 
-# Assign colors to nodes
-node_colors = [colors[podciag_to_index[G.nodes[node]['podciag']]] for node in G.nodes()]
-
-# Draw the graph
-plt.figure(figsize=(15, 15))
-pos = nx.spring_layout(G, seed=42)
-nx.draw(G, pos, node_color=node_colors, with_labels=True, 
-        node_size=200, font_size=6, edge_color='grey')
-plt.title(f"Graf z kolorowanymi podciągami (liczba podciągów: {num_podciags})")
+# 4) Rysuj
+plt.figure(figsize=(12, 12))
+pos = nx.spring_layout(G, seed=42)   # układ siłowy
+nx.draw(
+    G, pos,
+    node_color=colors,
+    with_labels=True,
+    node_size=200,
+    font_size=6,
+    edge_color='gray'
+)
+plt.title(f"Graf: {G.number_of_nodes()} węzłów, {n_p} podgrafów")
+plt.axis('off')
 plt.show()
