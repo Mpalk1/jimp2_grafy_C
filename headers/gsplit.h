@@ -32,7 +32,7 @@
 # define ERROR_INVALID_EXTENSION "Nieprawidłowe rozszerzenie pliku - oczekiwano .csrrg"
 # define ERROR_INVALID_NAME "Nieprawidłowa nazwa pliku - plik musi posiadać nazwę"
 # define ERROR_MARGIN_EXCEEDED "Przekroczono wartość marginesu - program nie jest w stanie podzielić grafu z takimi parametrami"
-# define ERROR_DISCONNECTED_PARTITIONS "Podgrafy nie są spójne - program nie jest w stanie podzielić grafu z takimi parametrami"
+# define ERROR_DISCONNECTED_COMPONENTS "Podgrafy nie są spójne - program nie jest w stanie podzielić grafu z takimi parametrami"
 
 /*
 Zawiera konfiguracje z opcji
@@ -61,6 +61,20 @@ typedef struct s_graph
 	size_t			nodes_num;
 }					t_graph;
 
+//struktura tymczanowa tylko dla latwosci manipulowania danymi
+typedef struct {
+    size_t node;
+    int subgraph;
+} bfs_temp;
+
+//struktura tymczasowa uzywana w funkcji optymalizacyjnej
+typedef struct s_move
+{
+	size_t			node_index;
+	int				gain;
+	int				target_part;
+}					t_move;
+
 /*
 Zawiera ważne zmienne
 */
@@ -75,12 +89,6 @@ typedef struct s_gsplit
 	char			*node_index;
 }					t_gsplit;
 
-typedef struct s_move
-{
-	size_t			node_index;
-	int				gain;
-	int				target_part;
-}					t_move;
 
 typedef struct s_output_data
 {
