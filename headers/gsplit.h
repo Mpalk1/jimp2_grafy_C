@@ -31,7 +31,8 @@
 # define ERROR_MARGIN_NOT_UINT "Margines musi być w formacie dodatniej liczby całkowitej"
 # define ERROR_INVALID_EXTENSION "Nieprawidłowe rozszerzenie pliku - oczekiwano .csrrg"
 # define ERROR_INVALID_NAME "Nieprawidłowa nazwa pliku - plik musi posiadać nazwę"
-# define ERROR_MARGIN_EXCEEDED "Przekroczono wartość marginesu"
+# define ERROR_MARGIN_EXCEEDED "Przekroczono wartość marginesu - program nie jest w stanie podzielić grafu z takimi parametrami"
+#define ERROR_DISCONNECTED_PARTITIONS "Podgrafy nie są spójne - program nie jest w stanie podzielić grafu z takimi parametrami"
 
 /*
 Zawiera konfiguracje z opcji

@@ -1,316 +1,316 @@
-  Węzeł 0 (Podciąg 5): Połączony z: 5
+ Węzeł 0 (Podciąg 0): Połączony z: 5
   Węzeł 1 (Podciąg 1): Połączony z: 104 69
-  Węzeł 2 (Podciąg 2): Połączony z: 9 65 279
+  Węzeł 2 (Podciąg 2): Połączony z: 65 279
   Węzeł 3 (Podciąg 3): Połączony z: 245 166 66
   Węzeł 4 (Podciąg 4): Połączony z: 262 204 254
-  Węzeł 5 (Podciąg 5): Połączony z: 0 38 54
-  Węzeł 6 (Podciąg 0): Połączony z: 58 276
-  Węzeł 7 (Podciąg 1): Połączony z: 167 26
-  Węzeł 8 (Podciąg 5): Połączony z: 79 180 37
-  Węzeł 9 (Podciąg 2): Połączony z: 2 148 292
-  Węzeł 10 (Podciąg 1): Połączony z: 264
+  Węzeł 5 (Podciąg 0): Połączony z: 0 38
+  Węzeł 6 (Podciąg 6): Połączony z: 273 58 276
+  Węzeł 7 (Podciąg 7): Połączony z: 167 49 26 298
+  Węzeł 8 (Podciąg 8): Połączony z: 79 180 86 278 37
+  Węzeł 9 (Podciąg 9): Połączony z: 148 292
+  Węzeł 10 (Podciąg 6): Połączony z: 126 264
   Węzeł 11 (Podciąg 4): Połączony z: 109
-  Węzeł 12 (Podciąg 5): Połączony z: 257 37
-  Węzeł 13 (Podciąg 0): Połączony z: 286
-  Węzeł 14 (Podciąg 1): Połączony z: 90 315
-  Węzeł 15 (Podciąg 1): Połączony z: 281 307 68 120
-  Węzeł 16 (Podciąg 0): Połączony z: 285 278
-  Węzeł 17 (Podciąg 3): Połączony z: 218
-  Węzeł 18 (Podciąg 0): Połączony z: 89 106 188
-  Węzeł 19 (Podciąg 1): Połączony z: 97 299
+  Węzeł 12 (Podciąg 8): Połączony z: 257 232 37
+  Węzeł 13 (Podciąg 1): Połączony z: 315 286
+  Węzeł 14 (Podciąg 1): Połączony z: 76 90 315
+  Węzeł 15 (Podciąg 6): Połączony z: 281 307 68
+  Węzeł 16 (Podciąg 8): Połączony z: 285 278
+  Węzeł 17 (Podciąg 8): Połączony z: 111 180
+  Węzeł 18 (Podciąg 2): Połączony z: 23 106 188
+  Węzeł 19 (Podciąg 1): Połączony z: 299
   Węzeł 20 (Podciąg 5): Połączony z: 53
-  Węzeł 21 (Podciąg 4): Połączony z: 156
-  Węzeł 22 (Podciąg 1): Połączony z: 259 179
-  Węzeł 23 (Podciąg 2): Połączony z: 229 65 127 126
+  Węzeł 21 (Podciąg 7): Połączony z: 27
+  Węzeł 22 (Podciąg 8): Połączony z: 259 179 79
+  Węzeł 23 (Podciąg 2): Połączony z: 18 229 65 127
   Węzeł 24 (Podciąg 3): Połączony z: 64 50 192
-  Węzeł 25 (Podciąg 2): Połączony z: 298 108 78
-  Węzeł 26 (Podciąg 1): Połączony z: 7 190
-  Węzeł 27 (Podciąg 1): Połączony z: 131 247
-  Węzeł 28 (Podciąg 0): Połączony z: 221
+  Węzeł 25 (Podciąg 7): Połączony z: 298 108 78
+  Węzeł 26 (Podciąg 7): Połączony z: 7
+  Węzeł 27 (Podciąg 7): Połączony z: 21 233 247
+  Węzeł 28 (Podciąg 0): Połączony z: 32
   Węzeł 29 (Podciąg 4): Połączony z: 101 119
-  Węzeł 30 (Podciąg 4): Połączony z: 40
+  Węzeł 30 (Podciąg 7): Połączony z: 40
   Węzeł 31 (Podciąg 3): Połączony z: 176
-  Węzeł 32 (Podciąg 5): Połączony z: 88 257
-  Węzeł 33 (Podciąg 3): Połączony z: 86 237 175
-  Węzeł 34 (Podciąg 1): Połączony z: 264 104
+  Węzeł 32 (Podciąg 0): Połączony z: 28 88
+  Węzeł 33 (Podciąg 8): Połączony z: 86
+  Węzeł 34 (Podciąg 1): Połączony z: 104
   Węzeł 35 (Podciąg 1): Połączony z: 155
-  Węzeł 36 (Podciąg 2): Połączony z: 174
-  Węzeł 37 (Podciąg 5): Połączony z: 8 12 48 38
-  Węzeł 38 (Podciąg 5): Połączony z: 5 37 125 202
-  Węzeł 39 (Podciąg 4): Połączony z: 232
-  Węzeł 40 (Podciąg 4): Połączony z: 30 309 92
-  Węzeł 41 (Podciąg 0): Połączony z: 276 82 152
-  Węzeł 42 (Podciąg 3): Połączony z: 52
-  Węzeł 43 (Podciąg 0): Połączony z: 76
+  Węzeł 36 (Podciąg 9): Połączony z: 174
+  Węzeł 37 (Podciąg 8): Połączony z: 8 12 272 48
+  Węzeł 38 (Podciąg 0): Połączony z: 5 125
+  Węzeł 39 (Podciąg 8): Połączony z: 232 270
+  Węzeł 40 (Podciąg 7): Połączony z: 30 298 158
+  Węzeł 41 (Podciąg 6): Połączony z: 276 152
+  Węzeł 42 (Podciąg 8): Połączony z: 180 52
+  Węzeł 43 (Podciąg 1): Połączony z: 76
   Węzeł 44 (Podciąg 4): Połączony z: 309 222 306 142 113
-  Węzeł 45 (Podciąg 4): Połączony z: 310
-  Węzeł 46 (Podciąg 5): Połączony z: 289 296 125
-  Węzeł 47 (Podciąg 4): Połączony z: 232
-  Węzeł 48 (Podciąg 5): Połączony z: 37
-  Węzeł 49 (Podciąg 3): Połączony z: 115 265
+  Węzeł 45 (Podciąg 9): Połączony z: 124
+  Węzeł 46 (Podciąg 0): Połączony z: 296 125
+  Węzeł 47 (Podciąg 8): Połączony z: 232
+  Węzeł 48 (Podciąg 8): Połączony z: 37 165
+  Węzeł 49 (Podciąg 7): Połączony z: 7 115 265
   Węzeł 50 (Podciąg 3): Połączony z: 24 245 67 291 128
-  Węzeł 51 (Podciąg 5): Połączony z: 243 280 249
-  Węzeł 52 (Podciąg 3): Połączony z: 42 99 165
-  Węzeł 53 (Podciąg 5): Połączony z: 20 243 54 244
-  Węzeł 54 (Podciąg 5): Połączony z: 5 53 102 70
+  Węzeł 51 (Podciąg 9): Połączony z: 269 280
+  Węzeł 52 (Podciąg 8): Połączony z: 42 99 165
+  Węzeł 53 (Podciąg 5): Połączony z: 20 243 54 244 92
+  Węzeł 54 (Podciąg 5): Połączony z: 53 102 70
   Węzeł 55 (Podciąg 4): Połączony z: 204 295
-  Węzeł 56 (Podciąg 1): Połączony z: 264 153
-  Węzeł 57 (Podciąg 1): Połączony z: 247
-  Węzeł 58 (Podciąg 0): Połączony z: 6 275
-  Węzeł 59 (Podciąg 3): Połączony z: 311
-  Węzeł 60 (Podciąg 2): Połączony z: 233
-  Węzeł 61 (Podciąg 5): Połączony z: 144
-  Węzeł 62 (Podciąg 3): Połączony z: 132 219
+  Węzeł 56 (Podciąg 6): Połączony z: 264 153
+  Węzeł 57 (Podciąg 7): Połączony z: 247
+  Węzeł 58 (Podciąg 6): Połączony z: 6 194 275
+  Węzeł 59 (Podciąg 7): Połączony z: 311
+  Węzeł 60 (Podciąg 7): Połączony z: 233
+  Węzeł 61 (Podciąg 2): Połączony z: 144
+  Węzeł 62 (Podciąg 3): Połączony z: 219
   Węzeł 63 (Podciąg 1): Połączony z: 181
   Węzeł 64 (Podciąg 3): Połączony z: 24
   Węzeł 65 (Podciąg 2): Połączony z: 2 23 261 288 110
   Węzeł 66 (Podciąg 3): Połączony z: 3 205 225
   Węzeł 67 (Podciąg 3): Połączony z: 50
-  Węzeł 68 (Podciąg 1): Połączony z: 15 273 216
+  Węzeł 68 (Podciąg 6): Połączony z: 15 138 273 216 234
   Węzeł 69 (Podciąg 1): Połączony z: 1 190
   Węzeł 70 (Podciąg 5): Połączony z: 54 287
-  Węzeł 71 (Podciąg 4): Połączony z: 253
-  Węzeł 72 (Podciąg 5): Połączony z: 294
+  Węzeł 71 (Podciąg 6): Połączony z: 126
+  Węzeł 72 (Podciąg 0): Połączony z: 294
   Węzeł 73 (Podciąg 4): Połączony z: 220
-  Węzeł 74 (Podciąg 0): Połączony z: 118
-  Węzeł 75 (Podciąg 5): Połączony z: 133 202
-  Węzeł 76 (Podciąg 0): Połączony z: 43 189
-  Węzeł 77 (Podciąg 0): Połączony z: 100 152
-  Węzeł 78 (Podciąg 2): Połączony z: 25 240
-  Węzeł 79 (Podciąg 5): Połączony z: 8 154
-  Węzeł 80 (Podciąg 0): Połączony z: 275 95 122
-  Węzeł 81 (Podciąg 1): Połączony z: 97
-  Węzeł 82 (Podciąg 0): Połączony z: 41 124 284 187
-  Węzeł 83 (Podciąg 2): Połączony z: 139
+  Węzeł 74 (Podciąg 9): Połączony z: 118
+  Węzeł 75 (Podciąg 2): Połączony z: 200 133 202
+  Węzeł 76 (Podciąg 1): Połączony z: 14 43 83
+  Węzeł 77 (Podciąg 9): Połączony z: 100
+  Węzeł 78 (Podciąg 7): Połączony z: 25 145
+  Węzeł 79 (Podciąg 8): Połączony z: 8 22 89 154
+  Węzeł 80 (Podciąg 6): Połączony z: 275 95
+  Węzeł 81 (Podciąg 8): Połączony z: 97
+  Węzeł 82 (Podciąg 9): Połączony z: 124 284
+  Węzeł 83 (Podciąg 1): Połączony z: 76
   Węzeł 84 (Podciąg 3): Połączony z: 205
-  Węzeł 85 (Podciąg 2): Połączony z: 110 138
-  Węzeł 86 (Podciąg 3): Połączony z: 33 248
-  Węzeł 87 (Podciąg 0): Połączony z: 123 308
-  Węzeł 88 (Podciąg 5): Połączony z: 32 125 294 297
-  Węzeł 89 (Podciąg 0): Połączony z: 18 135 201
+  Węzeł 85 (Podciąg 2): Połączony z: 110
+  Węzeł 86 (Podciąg 8): Połączony z: 8 33 248
+  Węzeł 87 (Podciąg 4): Połączony z: 164
+  Węzeł 88 (Podciąg 0): Połączony z: 32 125 294 297
+  Węzeł 89 (Podciąg 8): Połączony z: 79 135 201
   Węzeł 90 (Podciąg 1): Połączony z: 14 155
-  Węzeł 91 (Podciąg 3): Połączony z: 237 301
-  Węzeł 92 (Podciąg 4): Połączony z: 40
-  Węzeł 93 (Podciąg 0): Połączony z: 152
+  Węzeł 91 (Podciąg 9): Połączony z: 284 118
+  Węzeł 92 (Podciąg 5): Połączony z: 53 193
+  Węzeł 93 (Podciąg 6): Połączony z: 152
   Węzeł 94 (Podciąg 3): Połączony z: 166 176 246
-  Węzeł 95 (Podciąg 0): Połączony z: 80
-  Węzeł 96 (Podciąg 2): Połączony z: 240 126
-  Węzeł 97 (Podciąg 1): Połączony z: 19 81 270 251
-  Węzeł 98 (Podciąg 4): Połączony z: 168
-  Węzeł 99 (Podciąg 3): Połączony z: 52
-  Węzeł 100 (Podciąg 0): Połączony z: 77 303 284
+  Węzeł 95 (Podciąg 6): Połączony z: 80
+  Węzeł 96 (Podciąg 1): Połączony z: 131
+  Węzeł 97 (Podciąg 8): Połączony z: 81 270 278
+  Węzeł 98 (Podciąg 5): Połączony z: 122 255
+  Węzeł 99 (Podciąg 8): Połączony z: 52
+  Węzeł 100 (Podciąg 9): Połączony z: 77 303 284
   Węzeł 101 (Podciąg 4): Połączony z: 29 215
   Węzeł 102 (Podciąg 5): Połączony z: 54 283
-  Węzeł 103 (Podciąg 0): Połączony z: 303 201 234
+  Węzeł 103 (Podciąg 9): Połączony z: 303
   Węzeł 104 (Podciąg 1): Połączony z: 1 34 181 299 315
-  Węzeł 105 (Podciąg 1): Połączony z: 212 270
-  Węzeł 106 (Podciąg 0): Połączony z: 18
-  Węzeł 107 (Podciąg 4): Połączony z: 112 162
-  Węzeł 108 (Podciąg 2): Połączony z: 25 269
+  Węzeł 105 (Podciąg 6): Połączony z: 212 211
+  Węzeł 106 (Podciąg 2): Połączony z: 18
+  Węzeł 107 (Podciąg 6): Połączony z: 162
+  Węzeł 108 (Podciąg 7): Połączony z: 25
   Węzeł 109 (Podciąg 4): Połączony z: 11 117
-  Węzeł 110 (Podciąg 2): Połączony z: 65 85 163 171 200 126 206
-  Węzeł 111 (Podciąg 4): Połączony z: 232 253
-  Węzeł 112 (Podciąg 4): Połączony z: 107 309 260
+  Węzeł 110 (Podciąg 2): Połączony z: 65 85 171 200 206
+  Węzeł 111 (Podciąg 8): Połączony z: 17 232
+  Węzeł 112 (Podciąg 4): Połączony z: 309 260
   Węzeł 113 (Podciąg 4): Połączony z: 44 258 312 168
-  Węzeł 114 (Podciąg 2): Połączony z: 148 174 185 146
-  Węzeł 115 (Podciąg 3): Połączony z: 49 265 166 186
-  Węzeł 116 (Podciąg 5): Połączony z: 228 300
+  Węzeł 114 (Podciąg 9): Połączony z: 148 174 185
+  Węzeł 115 (Podciąg 7): Połączony z: 49 265 186
+  Węzeł 116 (Podciąg 0): Połączony z: 228 300
   Węzeł 117 (Podciąg 4): Połączony z: 109 262 302
-  Węzeł 118 (Podciąg 0): Połączony z: 74 303
+  Węzeł 118 (Podciąg 9): Połączony z: 74 91 303
   Węzeł 119 (Podciąg 4): Połączony z: 29 159
-  Węzeł 120 (Podciąg 1): Połączony z: 15 181 199
-  Węzeł 121 (Podciąg 2): Połączony z: 148 240
-  Węzeł 122 (Podciąg 0): Połączony z: 80 308
-  Węzeł 123 (Podciąg 0): Połączony z: 87 314 189
-  Węzeł 124 (Podciąg 0): Połączony z: 82 209 308
-  Węzeł 125 (Podciąg 5): Połączony z: 38 46 88 300 293
-  Węzeł 126 (Podciąg 2): Połączony z: 23 96 110 139
+  Węzeł 120 (Podciąg 1): Połączony z: 181 199
+  Węzeł 121 (Podciąg 9): Połączony z: 148 240
+  Węzeł 122 (Podciąg 5): Połączony z: 98 287
+  Węzeł 123 (Podciąg 2): Połączony z: 314 189
+  Węzeł 124 (Podciąg 9): Połączony z: 45 82 148 209 308
+  Węzeł 125 (Podciąg 0): Połączony z: 38 46 88 300 293
+  Węzeł 126 (Podciąg 6): Połączony z: 10 71 273 151
   Węzeł 127 (Podciąg 2): Połączony z: 23 277
   Węzeł 128 (Podciąg 3): Połączony z: 50
-  Węzeł 129 (Podciąg 1): Połączony z: 273
-  Węzeł 130 (Podciąg 1): Połączony z: 227
-  Węzeł 131 (Podciąg 1): Połączony z: 27 181
-  Węzeł 132 (Podciąg 3): Połączony z: 62
-  Węzeł 133 (Podciąg 5): Połączony z: 75 242
-  Węzeł 134 (Podciąg 5): Połączony z: 180
-  Węzeł 135 (Podciąg 0): Połączony z: 89 189
-  Węzeł 136 (Podciąg 1): Połączony z: 307 282
-  Węzeł 137 (Podciąg 1): Połączony z: 307
-  Węzeł 138 (Podciąg 2): Połączony z: 85 146 268
-  Węzeł 139 (Podciąg 2): Połączony z: 83 126 223 268
+  Węzeł 129 (Podciąg 6): Połączony z: 273
+  Węzeł 130 (Podciąg 8): Połączony z: 227
+  Węzeł 131 (Podciąg 1): Połączony z: 96 181
+  Węzeł 132 (Podciąg 6): Połączony z: 234
+  Węzeł 133 (Podciąg 2): Połączony z: 75 242
+  Węzeł 134 (Podciąg 7): Połączony z: 167
+  Węzeł 135 (Podciąg 8): Połączony z: 89
+  Węzeł 136 (Podciąg 9): Połączony z: 282 269
+  Węzeł 137 (Podciąg 6): Połączony z: 307
+  Węzeł 138 (Podciąg 6): Połączony z: 68 146 264
+  Węzeł 139 (Podciąg 2): Połączony z: 223 268
   Węzeł 140 (Podciąg 4): Połączony z: 142 310 258 156
   Węzeł 141 (Podciąg 2): Połączony z: 252
   Węzeł 142 (Podciąg 4): Połączony z: 44 140 159 254
   Węzeł 143 (Podciąg 3): Połączony z: 313
-  Węzeł 144 (Podciąg 5): Połączony z: 61 202
-  Węzeł 145 (Podciąg 3): Połączony z: 211 214
-  Węzeł 146 (Podciąg 2): Połączony z: 114 138 305 274
+  Węzeł 144 (Podciąg 2): Połączony z: 61 202
+  Węzeł 145 (Podciąg 7): Połączony z: 78
+  Węzeł 146 (Podciąg 6): Połączony z: 138 273 305 274
   Węzeł 147 (Podciąg 1): Połączony z: 256 299
-  Węzeł 148 (Podciąg 2): Połączony z: 9 114 121 279 157
-  Węzeł 149 (Podciąg 0): Połączony z: 224
-  Węzeł 150 (Podciąg 2): Połączony z: 233 252
-  Węzeł 151 (Podciąg 0): Połączony z: 221 187
-  Węzeł 152 (Podciąg 0): Połączony z: 41 77 93 209
-  Węzeł 153 (Podciąg 1): Połączony z: 56 216 212
-  Węzeł 154 (Podciąg 5): Połączony z: 79
+  Węzeł 148 (Podciąg 9): Połączony z: 9 114 121 124 157
+  Węzeł 149 (Podciąg 7): Połączony z: 224
+  Węzeł 150 (Podciąg 2): Połączony z: 252
+  Węzeł 151 (Podciąg 6): Połączony z: 126 221 187
+  Węzeł 152 (Podciąg 6): Połączony z: 41 93
+  Węzeł 153 (Podciąg 6): Połączony z: 56 216 212
+  Węzeł 154 (Podciąg 8): Połączony z: 79
   Węzeł 155 (Podciąg 1): Połączony z: 35 90
-  Węzeł 156 (Podciąg 4): Połączony z: 21 140 232
-  Węzeł 157 (Podciąg 2): Połączony z: 148
-  Węzeł 158 (Podciąg 3): Połączony z: 248
+  Węzeł 156 (Podciąg 4): Połączony z: 140
+  Węzeł 157 (Podciąg 9): Połączony z: 148
+  Węzeł 158 (Podciąg 7): Połączony z: 40
   Węzeł 159 (Podciąg 4): Połączony z: 119 142
-  Węzeł 160 (Podciąg 5): Połączony z: 283 169
+  Węzeł 160 (Podciąg 5): Połączony z: 283 169 193
   Węzeł 161 (Podciąg 1): Połączony z: 196 299
-  Węzeł 162 (Podciąg 4): Połączony z: 107
-  Węzeł 163 (Podciąg 2): Połączony z: 110 298
-  Węzeł 164 (Podciąg 4): Połączony z: 309 220 262
-  Węzeł 165 (Podciąg 3): Połączony z: 52 237
-  Węzeł 166 (Podciąg 3): Połączony z: 3 94 115 213
-  Węzeł 167 (Podciąg 1): Połączony z: 7
-  Węzeł 168 (Podciąg 4): Połączony z: 98 113 309
+  Węzeł 162 (Podciąg 6): Połączony z: 107 276
+  Węzeł 163 (Podciąg 7): Połączony z: 298 304
+  Węzeł 164 (Podciąg 4): Połączony z: 87 309 220 262
+  Węzeł 165 (Podciąg 8): Połączony z: 48 52
+  Węzeł 166 (Podciąg 3): Połączony z: 3 94 213
+  Węzeł 167 (Podciąg 7): Połączony z: 7 134 233
+  Węzeł 168 (Podciąg 4): Połączony z: 113 309
   Węzeł 169 (Podciąg 5): Połączony z: 160
-  Węzeł 170 (Podciąg 5): Połączony z: 230
+  Węzeł 170 (Podciąg 2): Połączony z: 230
   Węzeł 171 (Podciąg 2): Połączony z: 110 198
-  Węzeł 172 (Podciąg 2): Połączony z: 269 292
+  Węzeł 172 (Podciąg 9): Połączony z: 269 292
   Węzeł 173 (Podciąg 4): Połączony z: 207 253
-  Węzeł 174 (Podciąg 2): Połączony z: 36 114
-  Węzeł 175 (Podciąg 3): Połączony z: 33 265
+  Węzeł 174 (Podciąg 9): Połączony z: 36 114 280
+  Węzeł 175 (Podciąg 7): Połączony z: 265
   Węzeł 176 (Podciąg 3): Połączony z: 31 94 231
   Węzeł 177 (Podciąg 3): Połączony z: 291
-  Węzeł 178 (Podciąg 2): Połączony z: 269
-  Węzeł 179 (Podciąg 1): Połączony z: 22 196 239 227
-  Węzeł 180 (Podciąg 5): Połączony z: 8 134
+  Węzeł 178 (Podciąg 9): Połączony z: 269
+  Węzeł 179 (Podciąg 8): Połączony z: 22 239 227
+  Węzeł 180 (Podciąg 8): Połączony z: 8 17 42 227
   Węzeł 181 (Podciąg 1): Połączony z: 63 104 120 131 238
   Węzeł 182 (Podciąg 3): Połączony z: 291
   Węzeł 183 (Podciąg 2): Połączony z: 288
-  Węzeł 184 (Podciąg 5): Połączony z: 300
-  Węzeł 185 (Podciąg 2): Połączony z: 114
-  Węzeł 186 (Podciąg 3): Połączony z: 115
-  Węzeł 187 (Podciąg 0): Połączony z: 82 151 286 304
-  Węzeł 188 (Podciąg 0): Połączony z: 18 197
-  Węzeł 189 (Podciąg 0): Połączony z: 76 123 135 226
-  Węzeł 190 (Podciąg 1): Połączony z: 26 69 195
+  Węzeł 184 (Podciąg 0): Połączony z: 300
+  Węzeł 185 (Podciąg 9): Połączony z: 114
+  Węzeł 186 (Podciąg 7): Połączony z: 115 290 304
+  Węzeł 187 (Podciąg 6): Połączony z: 151 289
+  Węzeł 188 (Podciąg 2): Połączony z: 18 197
+  Węzeł 189 (Podciąg 2): Połączony z: 123 226 223
+  Węzeł 190 (Podciąg 1): Połączony z: 69 195
   Węzeł 191 (Podciąg 5): Połączony z: 208 244
   Węzeł 192 (Podciąg 3): Połączony z: 24
-  Węzeł 193 (Podciąg 2): Połączony z: 206
-  Węzeł 194 (Podciąg 4): Połączony z: 220
-  Węzeł 195 (Podciąg 1): Połączony z: 190 250 259
-  Węzeł 196 (Podciąg 1): Połączony z: 161 179
-  Węzeł 197 (Podciąg 0): Połączony z: 188
-  Węzeł 198 (Podciąg 2): Połączony z: 171
-  Węzeł 199 (Podciąg 1): Połączony z: 120 216
-  Węzeł 200 (Podciąg 2): Połączony z: 110 290
-  Węzeł 201 (Podciąg 0): Połączony z: 89 103
-  Węzeł 202 (Podciąg 5): Połączony z: 38 75 144 230
-  Węzeł 203 (Podciąg 0): Połączony z: 286 224
+  Węzeł 193 (Podciąg 5): Połączony z: 92 160
+  Węzeł 194 (Podciąg 6): Połączony z: 58 273
+  Węzeł 195 (Podciąg 1): Połączony z: 190 250
+  Węzeł 196 (Podciąg 1): Połączony z: 161
+  Węzeł 197 (Podciąg 2): Połączony z: 188
+  Węzeł 198 (Podciąg 2): Połączony z: 171 230
+  Węzeł 199 (Podciąg 1): Połączony z: 120
+  Węzeł 200 (Podciąg 2): Połączony z: 75 110
+  Węzeł 201 (Podciąg 8): Połączony z: 89
+  Węzeł 202 (Podciąg 2): Połączony z: 75 144 230
+  Węzeł 203 (Podciąg 7): Połączony z: 224
   Węzeł 204 (Podciąg 4): Połączony z: 4 55
   Węzeł 205 (Podciąg 3): Połączony z: 66 84 267
-  Węzeł 206 (Podciąg 2): Połączony z: 110 193
+  Węzeł 206 (Podciąg 2): Połączony z: 110
   Węzeł 207 (Podciąg 4): Połączony z: 173 309 306
   Węzeł 208 (Podciąg 5): Połączony z: 191
-  Węzeł 209 (Podciąg 0): Połączony z: 124 152
-  Węzeł 210 (Podciąg 2): Połączony z: 292
-  Węzeł 211 (Podciąg 3): Połączony z: 145
-  Węzeł 212 (Podciąg 1): Połączony z: 105 153 251
-  Węzeł 213 (Podciąg 3): Połączony z: 166 236 311 313
-  Węzeł 214 (Podciąg 3): Połączony z: 145 267
+  Węzeł 209 (Podciąg 9): Połączony z: 124
+  Węzeł 210 (Podciąg 9): Połączony z: 292
+  Węzeł 211 (Podciąg 6): Połączony z: 105
+  Węzeł 212 (Podciąg 6): Połączony z: 105 153 251
+  Węzeł 213 (Podciąg 3): Połączony z: 166 236 313
+  Węzeł 214 (Podciąg 3): Połączony z: 267
   Węzeł 215 (Podciąg 4): Połączony z: 101 262
-  Węzeł 216 (Podciąg 1): Połączony z: 68 153 199
+  Węzeł 216 (Podciąg 6): Połączony z: 68 153
   Węzeł 217 (Podciąg 2): Połączony z: 288
-  Węzeł 218 (Podciąg 3): Połączony z: 17 225
+  Węzeł 218 (Podciąg 3): Połączony z: 225
   Węzeł 219 (Podciąg 3): Połączony z: 62 236
-  Węzeł 220 (Podciąg 4): Połączony z: 73 164 194 271 260
-  Węzeł 221 (Podciąg 0): Połączony z: 28 151
+  Węzeł 220 (Podciąg 4): Połączony z: 73 164 271 260
+  Węzeł 221 (Podciąg 6): Połączony z: 151
   Węzeł 222 (Podciąg 4): Połączony z: 44 235
-  Węzeł 223 (Podciąg 2): Połączony z: 139 279
-  Węzeł 224 (Podciąg 0): Połączony z: 149 203
-  Węzeł 225 (Podciąg 3): Połączony z: 66 218 248
-  Węzeł 226 (Podciąg 0): Połączony z: 189
-  Węzeł 227 (Podciąg 1): Połączony z: 130 179 238
-  Węzeł 228 (Podciąg 5): Połączony z: 116
+  Węzeł 223 (Podciąg 2): Połączony z: 139 189 279
+  Węzeł 224 (Podciąg 7): Połączony z: 149 203 298
+  Węzeł 225 (Podciąg 3): Połączony z: 66 218
+  Węzeł 226 (Podciąg 2): Połączony z: 189
+  Węzeł 227 (Podciąg 8): Połączony z: 130 179 180
+  Węzeł 228 (Podciąg 0): Połączony z: 116
   Węzeł 229 (Podciąg 2): Połączony z: 23
-  Węzeł 230 (Podciąg 5): Połączony z: 170 202
+  Węzeł 230 (Podciąg 2): Połączony z: 170 198 202
   Węzeł 231 (Podciąg 3): Połączony z: 176
-  Węzeł 232 (Podciąg 4): Połączony z: 39 47 111 156 295
-  Węzeł 233 (Podciąg 2): Połączony z: 60 150 290
-  Węzeł 234 (Podciąg 0): Połączony z: 103 285
+  Węzeł 232 (Podciąg 8): Połączony z: 12 39 47 111
+  Węzeł 233 (Podciąg 7): Połączony z: 27 60 167 290
+  Węzeł 234 (Podciąg 6): Połączony z: 68 132
   Węzeł 235 (Podciąg 4): Połączony z: 222 263
   Węzeł 236 (Podciąg 3): Połączony z: 213 219
-  Węzeł 237 (Podciąg 3): Połączony z: 33 91 165 245
-  Węzeł 238 (Podciąg 1): Połączony z: 181 227 251
-  Węzeł 239 (Podciąg 1): Połączony z: 179
-  Węzeł 240 (Podciąg 2): Połączony z: 78 96 121
+  Węzeł 237 (Podciąg 3): Połączony z: 245
+  Węzeł 238 (Podciąg 1): Połączony z: 181
+  Węzeł 239 (Podciąg 8): Połączony z: 179
+  Węzeł 240 (Podciąg 9): Połączony z: 121
   Węzeł 241 (Podciąg 1): Połączony z: 256
-  Węzeł 242 (Podciąg 5): Połączony z: 133
-  Węzeł 243 (Podciąg 5): Połączony z: 51 53 255
+  Węzeł 242 (Podciąg 2): Połączony z: 133
+  Węzeł 243 (Podciąg 5): Połączony z: 53 255
   Węzeł 244 (Podciąg 5): Połączony z: 53 191
   Węzeł 245 (Podciąg 3): Połączony z: 3 50 237
   Węzeł 246 (Podciąg 3): Połączony z: 94
-  Węzeł 247 (Podciąg 1): Połączony z: 27 57
-  Węzeł 248 (Podciąg 3): Połączony z: 86 158 225 301
-  Węzeł 249 (Podciąg 5): Połączony z: 51 300
+  Węzeł 247 (Podciąg 7): Połączony z: 27 57
+  Węzeł 248 (Podciąg 8): Połączony z: 86 301
+  Węzeł 249 (Podciąg 0): Połączony z: 300
   Węzeł 250 (Podciąg 1): Połączony z: 195
-  Węzeł 251 (Podciąg 1): Połączony z: 97 212 238 273
+  Węzeł 251 (Podciąg 6): Połączony z: 212 273
   Węzeł 252 (Podciąg 2): Połączony z: 141 150 279
-  Węzeł 253 (Podciąg 4): Połączony z: 71 111 173 302
+  Węzeł 253 (Podciąg 4): Połączony z: 173 302
   Węzeł 254 (Podciąg 4): Połączony z: 4 142
-  Węzeł 255 (Podciąg 5): Połączony z: 243 280
+  Węzeł 255 (Podciąg 5): Połączony z: 98 243
   Węzeł 256 (Podciąg 1): Połączony z: 147 241
-  Węzeł 257 (Podciąg 5): Połączony z: 12 32
+  Węzeł 257 (Podciąg 8): Połączony z: 12
   Węzeł 258 (Podciąg 4): Połączony z: 113 140
-  Węzeł 259 (Podciąg 1): Połączony z: 22 195
+  Węzeł 259 (Podciąg 8): Połączony z: 22
   Węzeł 260 (Podciąg 4): Połączony z: 112 220
   Węzeł 261 (Podciąg 2): Połączony z: 65
   Węzeł 262 (Podciąg 4): Połączony z: 4 117 164 215 309
   Węzeł 263 (Podciąg 4): Połączony z: 235
-  Węzeł 264 (Podciąg 1): Połączony z: 10 34 56 273
-  Węzeł 265 (Podciąg 3): Połączony z: 49 115 175
-  Węzeł 266 (Podciąg 5): Połączony z: 294
+  Węzeł 264 (Podciąg 6): Połączony z: 10 56 138 273
+  Węzeł 265 (Podciąg 7): Połączony z: 49 115 175
+  Węzeł 266 (Podciąg 0): Połączony z: 294
   Węzeł 267 (Podciąg 3): Połączony z: 205 214
-  Węzeł 268 (Podciąg 2): Połączony z: 138 139
-  Węzeł 269 (Podciąg 2): Połączony z: 108 172 178
-  Węzeł 270 (Podciąg 1): Połączony z: 97 105
+  Węzeł 268 (Podciąg 2): Połączony z: 139
+  Węzeł 269 (Podciąg 9): Połączony z: 51 136 172 178
+  Węzeł 270 (Podciąg 8): Połączony z: 39 97
   Węzeł 271 (Podciąg 4): Połączony z: 220
-  Węzeł 272 (Podciąg 1): Połączony z: 315
-  Węzeł 273 (Podciąg 1): Połączony z: 68 129 251 264
-  Węzeł 274 (Podciąg 2): Połączony z: 146
-  Węzeł 275 (Podciąg 0): Połączony z: 58 80 303
-  Węzeł 276 (Podciąg 0): Połączony z: 6 41
+  Węzeł 272 (Podciąg 8): Połączony z: 37
+  Węzeł 273 (Podciąg 6): Połączony z: 6 68 126 129 146 194 251 264
+  Węzeł 274 (Podciąg 6): Połączony z: 146
+  Węzeł 275 (Podciąg 6): Połączony z: 58 80
+  Węzeł 276 (Podciąg 6): Połączony z: 6 41 162
   Węzeł 277 (Podciąg 2): Połączony z: 127
-  Węzeł 278 (Podciąg 0): Połączony z: 16
-  Węzeł 279 (Podciąg 2): Połączony z: 2 148 223 252 292
-  Węzeł 280 (Podciąg 5): Połączony z: 51 255
-  Węzeł 281 (Podciąg 1): Połączony z: 15
-  Węzeł 282 (Podciąg 1): Połączony z: 136
+  Węzeł 278 (Podciąg 8): Połączony z: 8 16 97
+  Węzeł 279 (Podciąg 2): Połączony z: 2 223 252
+  Węzeł 280 (Podciąg 9): Połączony z: 51 174
+  Węzeł 281 (Podciąg 6): Połączony z: 15 289
+  Węzeł 282 (Podciąg 9): Połączony z: 136
   Węzeł 283 (Podciąg 5): Połączony z: 102 160
-  Węzeł 284 (Podciąg 0): Połączony z: 82 100 308
-  Węzeł 285 (Podciąg 0): Połączony z: 16 234 304
-  Węzeł 286 (Podciąg 0): Połączony z: 13 187 203
-  Węzeł 287 (Podciąg 5): Połączony z: 70
-  Węzeł 288 (Podciąg 2): Połączony z: 65 183 217 298
-  Węzeł 289 (Podciąg 5): Połączony z: 46
-  Węzeł 290 (Podciąg 2): Połączony z: 200 233
+  Węzeł 284 (Podciąg 9): Połączony z: 82 91 100 308
+  Węzeł 285 (Podciąg 8): Połączony z: 16
+  Węzeł 286 (Podciąg 1): Połączony z: 13
+  Węzeł 287 (Podciąg 5): Połączony z: 70 122
+  Węzeł 288 (Podciąg 2): Połączony z: 65 183 217
+  Węzeł 289 (Podciąg 6): Połączony z: 187 281
+  Węzeł 290 (Podciąg 7): Połączony z: 186 233
   Węzeł 291 (Podciąg 3): Połączony z: 50 177 182
-  Węzeł 292 (Podciąg 2): Połączony z: 9 172 210 279
-  Węzeł 293 (Podciąg 5): Połączony z: 125
-  Węzeł 294 (Podciąg 5): Połączony z: 72 88 266 296
-  Węzeł 295 (Podciąg 4): Połączony z: 55 232
-  Węzeł 296 (Podciąg 5): Połączony z: 46 294
-  Węzeł 297 (Podciąg 5): Połączony z: 88
-  Węzeł 298 (Podciąg 2): Połączony z: 25 163 288
+  Węzeł 292 (Podciąg 9): Połączony z: 9 172 210 303
+  Węzeł 293 (Podciąg 0): Połączony z: 125
+  Węzeł 294 (Podciąg 0): Połączony z: 72 88 266 296
+  Węzeł 295 (Podciąg 4): Połączony z: 55
+  Węzeł 296 (Podciąg 0): Połączony z: 46 294
+  Węzeł 297 (Podciąg 0): Połączony z: 88
+  Węzeł 298 (Podciąg 7): Połączony z: 7 25 40 163 224 311
   Węzeł 299 (Podciąg 1): Połączony z: 19 104 147 161
-  Węzeł 300 (Podciąg 5): Połączony z: 116 125 184 249
-  Węzeł 301 (Podciąg 3): Połączony z: 91 248
+  Węzeł 300 (Podciąg 0): Połączony z: 116 125 184 249
+  Węzeł 301 (Podciąg 8): Połączony z: 248
   Węzeł 302 (Podciąg 4): Połączony z: 117 253
-  Węzeł 303 (Podciąg 0): Połączony z: 100 103 118 275
-  Węzeł 304 (Podciąg 0): Połączony z: 187 285
-  Węzeł 305 (Podciąg 2): Połączony z: 146
+  Węzeł 303 (Podciąg 9): Połączony z: 100 103 118 292
+  Węzeł 304 (Podciąg 7): Połączony z: 163 186
+  Węzeł 305 (Podciąg 6): Połączony z: 146
   Węzeł 306 (Podciąg 4): Połączony z: 44 207
-  Węzeł 307 (Podciąg 1): Połączony z: 15 136 137
-  Węzeł 308 (Podciąg 0): Połączony z: 87 122 124 284
-  Węzeł 309 (Podciąg 4): Połączony z: 40 44 112 164 168 207 262
-  Węzeł 310 (Podciąg 4): Połączony z: 45 140
-  Węzeł 311 (Podciąg 3): Połączony z: 59 213
+  Węzeł 307 (Podciąg 6): Połączony z: 15 137
+  Węzeł 308 (Podciąg 9): Połączony z: 124 284
+  Węzeł 309 (Podciąg 4): Połączony z: 44 112 164 168 207 262
+  Węzeł 310 (Podciąg 4): Połączony z: 140
+  Węzeł 311 (Podciąg 7): Połączony z: 59 298
   Węzeł 312 (Podciąg 4): Połączony z: 113
   Węzeł 313 (Podciąg 3): Połączony z: 143 213
-  Węzeł 314 (Podciąg 0): Połączony z: 123
-  Węzeł 315 (Podciąg 1): Połączony z: 14 104 272
+  Węzeł 314 (Podciąg 2): Połączony z: 123
+  Węzeł 315 (Podciąg 1): Połączony z: 13 14 104

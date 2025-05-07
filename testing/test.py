@@ -3,6 +3,9 @@ import matplotlib.pyplot as plt
 import re
 import numpy as np
 
+# plik do wizualnego debugowania algorytmu
+# nie jest czescia programu
+
 # Initialize the graph
 G = nx.Graph()
 
