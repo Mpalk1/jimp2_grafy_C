@@ -11,9 +11,7 @@ int	count_all_nodes(t_graph *graphs, int graphs_num)// todo do przeniesienia
 
 int	main(int argc, char **argv)
 {
-
 	clock_t start_time = clock();
-
 	t_options	options;
 	t_gsplit	info;
 	t_graph		*graphs;
@@ -29,7 +27,7 @@ int	main(int argc, char **argv)
 	graphs = alloc_graphs(&info);
 	rewind(info.input);
 	load_graphs(&info, graphs);
-	printf("\n*****Oryginalny graf*****");
+	//printf("\n*****Oryginalny graf*****");
 	//print_graphs(graphs, 1);
 	if (!make_subgraphs(&graphs[0], options.parts, options.margin, info.opts))
 	{
@@ -37,10 +35,10 @@ int	main(int argc, char **argv)
 		free_graphs(graphs, info.graphs_num);
 		return (EXIT_FAILURE);
 	}
-	if (info.opts->verbose){
-		printf("\n*****Podzielony graf*****");
-		print_graphs1(graphs, info.graphs_num);
-	}
+	// if (info.opts->verbose){
+		//printf("\n*****Podzielony graf*****");
+		//print_graphs1(graphs, info.graphs_num);
+	// }
 	
 	if (info.opts->verbose)
 		printf("Graf został podzielony, zapisywanie grafu.\n");
@@ -52,8 +50,10 @@ int	main(int argc, char **argv)
 		printf("Graf zapisany, wychodzenie z programu.\n");
 	free_gsplit(&info);
 	free_graphs(graphs, info.graphs_num);
-	 clock_t end_time = clock();
-    double elapsed_secs = (double)(end_time - start_time) / CLOCKS_PER_SEC;
-    printf("\nCzas wykonania gsplit: %.3f sekundy\n", elapsed_secs);
+	if (info.opts->verbose) {
+		clock_t end_time = clock();
+		double elapsed_secs = (double)(end_time - start_time) / CLOCKS_PER_SEC;
+		printf("Czas wykonania gsplit: %.3f sekundy\n", elapsed_secs);
+	}
 	return (EXIT_SUCCESS);
 }

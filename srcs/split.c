@@ -477,25 +477,49 @@ bool make_subgraphs(t_graph *graph, int num_parts, int margin,
 
     size_t cuts = remove_subgraphs_connections(graph);
 
-    if (opts->verbose) {
+
+    if (opts->verbose){
         printf("*****\n");
+        printf("Ilość krawędzi grafu po przecięciach: %zu\n", count_edges(graph));
         printf("Ilość przeciętych krawędzi: %zu\n", cuts);
-        printf("*****\n");
+        int *part_counts = calloc(num_parts, sizeof(int));
+        if (part_counts) {
+            for (size_t j = 0; j < graph->nodes_num; j++) {
+                int part = graph->nodes[j].subgraph;
+                if (part >= 0 && part < num_parts) {
+                    part_counts[part]++;
+                }
+            }
+            printf("Ilość węzłów w podgrafach: ");
+            for (int p = 0; p < num_parts; p++) {
+                printf("%d:%d ", p, part_counts[p]);
+            }
+            printf("\n");
+        }
     }
 
-    calculate_subgraph_sizes(graph, num_parts, sizes);
-    if (!subgraphs_are_balanced(sizes, num_parts, ideal, margin) &&
-        !opts->force) {
-        err_print(ERROR_MARGIN_EXCEEDED);
-        free(sizes);
-        return false;
+    calculate_partition_sizes(graph, num_parts, sizes);
+    if (!partitions_are_balanced(sizes, num_parts, ideal, margin)) {
+        if (opts->verbose && opts->force) {
+            printf("Rożnica pomiędzy podgrafami nie mieści sie w marginesie, wymuszanie tworzenia grafu.\n");
+        } else if (!opts->force) {
+            err_print(ERROR_MARGIN_EXCEEDED);
+            free(sizes);
+            return false;
+        }
     } else if (opts->verbose) {
         printf("Rożnica pomiędzy podgrafami mieści sie w marginesie.\n");
     }
-    if (!check_partitions_connected(graph, num_parts) && !opts->force) {
-        err_print(ERROR_DISCONNECTED_PARTITIONS);
-        free(sizes);
-        return false;
+    if(!check_partitions_connected(graph, num_parts)) {
+        if (opts->verbose && opts->force) {
+            printf("Podgrafy nie są spójne, wymuszanie tworzenia grafu.\n");
+        } else if (!opts->force) {
+            err_print(ERROR_DISCONNECTED_PARTITIONS);
+            free(sizes);
+            return false;
+        }
+    } else if (opts->verbose) {
+        printf("Podgrafy są spójne.\n");
     }
 
     free(sizes);
